@@ -21,7 +21,6 @@ function AgeInput({ name, label, min = 0, max = 99 }: IProps) {
         },
         {
           validator(_, value) {
-            console.log({ value });
             if (Number(value) < min) {
               return Promise.reject(
                 new Error(`سن نمی تواند از  ${min} کمتر باشد`)

@@ -13,6 +13,7 @@ import GenderSelection from "./components/gender";
 import TextAreaInput from "./components/textArea";
 import ImageUploader from "./components/imageUploader";
 import FileUploader from "./components/fileUploader";
+import RadioInput from "./components/radioInput";
 
 function App() {
   const [form] = Form.useForm();
@@ -61,6 +62,15 @@ function App() {
         <ImageUploader name="imageUploader" label="لوگو" />
 
         <FileUploader name="fileUploader" label="آپلودر فایل" />
+
+        <RadioInput
+          name="radio"
+          label="نوع خدمات درخواستی"
+          options={[
+            { name: "پشتیبانی دو ماهه", value: "value1" },
+            { name: "پشتیبانی 6 ماهه", value: "value2" },
+          ]}
+        />
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
