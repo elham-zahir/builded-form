@@ -11,6 +11,7 @@ import NationalCodeInput from "./components/nationalCodeInput";
 import AgeInput from "./components/ageInput";
 import GenderSelection from "./components/gender";
 import TextAreaInput from "./components/textArea";
+import ImageUploader from "./components/imageUploader";
 
 function App() {
   const [form] = Form.useForm();
@@ -52,6 +53,11 @@ function App() {
         <GenderSelection name="gender" label="جنسیت" />
 
         <TextAreaInput name="description" label="توضیحات" />
+
+        <NameInput label="نام محصول" name="productName" />
+        <NameInput label="شعار" name="slogan" />
+
+        <ImageUploader name="imageUploader" label="لوگو" />
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
