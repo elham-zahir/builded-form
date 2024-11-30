@@ -10,6 +10,7 @@ import nationalCodeValidation from "national-code-validation";
 import NationalCodeInput from "./components/nationalCodeInput";
 import AgeInput from "./components/ageInput";
 import GenderSelection from "./components/gender";
+import TextAreaInput from "./components/textArea";
 
 function App() {
   const [form] = Form.useForm();
@@ -49,6 +50,8 @@ function App() {
         <AgeInput name="age" label="سن" />
 
         <GenderSelection name="gender" label="جنسیت" />
+
+        <TextAreaInput name="description" label="توضیحات" />
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
