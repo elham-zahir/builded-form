@@ -18,7 +18,7 @@ function PhoneNumberInput({ name, label }: IProps) {
           message: requiredValidation(),
         },
         {
-          pattern: /^09\d{8}$/,
+          pattern: /^09\d{9}$/,
           message:
             "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 09 شروع شود و 10 رقم باشد).",
         },

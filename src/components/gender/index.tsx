@@ -7,6 +7,16 @@ interface IProps {
   label: string;
 }
 
+interface IOptionType {
+  label: string;
+  value: string;
+}
+
+const genderOptions: IOptionType[] = [
+  { value: "male", label: "مذکر" },
+  { value: "female", label: "مونث" },
+];
+
 function GenderSelection({ name, label }: IProps) {
   return (
     <Form.Item
@@ -19,13 +29,15 @@ function GenderSelection({ name, label }: IProps) {
         },
       ]}
     >
-      {" "}
-      <Select
-        options={[
-          { value: "male", label: <span>مذکر</span> },
-          { value: "female", label: <span>مونث</span> },
-        ]}
-      />
+      <Select allowClear>
+        {genderOptions.map((item: IOptionType, index: number) => {
+          return (
+            <Select.Option value={item.value} key={index}>
+              {item.label}
+            </Select.Option>
+          );
+        })}
+      </Select>
     </Form.Item>
   );
 }
