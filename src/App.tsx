@@ -12,6 +12,7 @@ import AgeInput from "./components/ageInput";
 import GenderSelection from "./components/gender";
 import TextAreaInput from "./components/textArea";
 import ImageUploader from "./components/imageUploader";
+import FileUploader from "./components/fileUploader";
 
 function App() {
   const [form] = Form.useForm();
@@ -58,6 +59,8 @@ function App() {
         <NameInput label="شعار" name="slogan" />
 
         <ImageUploader name="imageUploader" label="لوگو" />
+
+        <FileUploader name="fileUploader" label="آپلودر فایل" />
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
