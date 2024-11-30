@@ -7,6 +7,7 @@ import PasswordInput from "./components/passwordInput";
 import EmailInput from "./components/emailInput";
 import PhoneNumberInput from "./components/phoneNumberInput";
 import nationalCodeValidation from "national-code-validation";
+import NationalCodeInput from "./components/nationalCodeInput";
 
 function App() {
   const [form] = Form.useForm();
@@ -40,6 +41,8 @@ function App() {
         <EmailInput label="ایمیل" name="email" />
 
         <PhoneNumberInput label="شماره تلفن" name="phoneNumber" />
+
+        <NationalCodeInput name="nationalCode" label="کد ملی" />
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
