@@ -4,35 +4,52 @@ import ImageUploader from "../imageUploader";
 import FileUploader from "../fileUploader";
 import RadioInput from "../radioInput";
 import CheckboxButtons from "../checkboxButton";
+import { Col, FormInstance, Row } from "antd";
 
-function BusinessData() {
+interface IProps {
+  form: FormInstance;
+}
+
+function BusinessData({ form }: IProps) {
   return (
-    <>
-      <TextInput label="نام محصول" name="productName" />
-      <TextInput label="شعار" name="slogan" />
+    <Row gutter={[20, 24]}>
+      <Col span={12}>
+        <TextInput label="نام محصول" name="productName" form={form} />
+      </Col>
+      <Col span={12}>
+        <TextInput label="شعار" name="slogan" form={form} />
+      </Col>
 
-      <ImageUploader name="imageUploader" label="لوگو" />
+      <Col span={12}>
+        <RadioInput
+          name="radio"
+          label="نوع خدمات درخواستی"
+          options={[
+            { name: "پشتیبانی دو ماهه", value: "value1" },
+            { name: "پشتیبانی 6 ماهه", value: "value2" },
+          ]}
+        />
+      </Col>
 
-      <FileUploader name="fileUploader" label="آپلودر فایل" />
+      <Col span={12}>
+        <CheckboxButtons
+          name="checkbox"
+          label="نوع خدمات درخواستی"
+          options={[
+            { name: "پشتیبانی دو ماهه", value: "value1" },
+            { name: "پشتیبانی 6 ماهه", value: "value2" },
+          ]}
+        />
+      </Col>
 
-      <RadioInput
-        name="radio"
-        label="نوع خدمات درخواستی"
-        options={[
-          { name: "پشتیبانی دو ماهه", value: "value1" },
-          { name: "پشتیبانی 6 ماهه", value: "value2" },
-        ]}
-      />
+      <Col span={12}>
+        <ImageUploader name="imageUploader" label="لوگو" />
+      </Col>
 
-      <CheckboxButtons
-        name="checkbox"
-        label="نوع خدمات درخواستی"
-        options={[
-          { name: "پشتیبانی دو ماهه", value: "value1" },
-          { name: "پشتیبانی 6 ماهه", value: "value2" },
-        ]}
-      />
-    </>
+      <Col span={12}>
+        <FileUploader name="fileUploader" label="آپلودر فایل" />
+      </Col>
+    </Row>
   );
 }
 

@@ -1,0 +1,30 @@
+$primary_color: #4daa9f;
+
+.submitButtonContainer {
+  direction: ltr;
+  height: 76px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(221, 221, 221);
+
+  .ant-form-item {
+    margin: 0 !important;
+  }
+
+  button {
+    height: 56px;
+    background-color: $primary_color;
+    // border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    // padding: 6px 30px;
+    width: 100%;
+
+    &:hover {
+      background-color: $primary_color !important;
+    }
+  }
+}
+
+.submitButtonCol {
+  direction: ltr;
+}

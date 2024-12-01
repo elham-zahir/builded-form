@@ -1,10 +1,11 @@
-import { Form, Input, Select } from "antd";
-import React from "react";
+import { Form, FormInstance, Input, Select } from "antd";
+import React, { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 
 interface IProps {
   name: string;
   label: string;
+  form: FormInstance;
 }
 
 const { Option } = Select;
@@ -46,7 +47,9 @@ const countries: IOptionType[] = [
   { label: "IR +98", value: "+98" },
 ];
 
-function PhoneNumberInput({ name, label }: IProps) {
+function PhoneNumberInput({ name, label, form }: IProps) {
+  const [isFocus, setIsFocus] = useState<boolean>(false);
+
   const onSearch = (value: string) => {};
 
   const selectBefore = (
@@ -68,23 +71,42 @@ function PhoneNumberInput({ name, label }: IProps) {
   );
 
   return (
-    <Form.Item
-      label={label}
-      name={name}
-      rules={[
-        {
-          required: true,
-          message: requiredValidation(),
-        },
-        {
-          pattern: /^9\d{9}$/,
-          message:
-            "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 9 شروع شود و 10 رقم باشد).",
-        },
-      ]}
-    >
-      <Input addonAfter={selectBefore} />
-    </Form.Item>
+    <div className={"formItemContainer"}>
+      <p
+        className={"label"}
+        style={{
+          top: isFocus ? "-11px" : "17px",
+          color: isFocus ? "#4daa9f" : "#969696",
+          fontWeight: isFocus ? 600 : 400,
+        }}
+      >
+        {label}
+      </p>
+      <Form.Item
+        name={name}
+        rules={[
+          {
+            required: true,
+            message: requiredValidation(),
+          },
+          {
+            pattern: /^9\d{9}$/,
+            message:
+              "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 9 شروع شود و 10 رقم باشد).",
+          },
+        ]}
+      >
+        <Input
+          addonAfter={selectBefore}
+          onClick={() => setIsFocus(true)}
+          onBlur={() => {
+            if (!form.getFieldValue(name)) {
+              setIsFocus(false);
+            }
+          }}
+        />
+      </Form.Item>
+    </div>
   );
 }
 

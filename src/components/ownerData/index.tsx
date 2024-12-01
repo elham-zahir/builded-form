@@ -6,37 +6,41 @@ import NationalCodeInput from "../nationalCodeInput";
 import AgeInput from "../ageInput";
 import GenderSelection from "../gender";
 import EmailInput from "../emailInput";
-import { Col, Row } from "antd";
+import { Col, FormInstance, Row } from "antd";
 
-function OwnerDataTab() {
+interface IProps {
+  form: FormInstance;
+}
+
+function OwnerDataTab({ form }: IProps) {
   return (
-    <Row gutter={[16, 24]}>
+    <Row gutter={[20, 24]}>
       <Col span={12}>
-        <TextInput label="نام" name="firstName" />
+        <TextInput label="نام" name="firstName" form={form} />
       </Col>
 
       <Col span={12}>
-        <TextInput label="نام خانوادگی" name="lastName" />
+        <TextInput label="نام خانوادگی" name="lastName" form={form} />
       </Col>
 
       <Col span={12}>
-        <PhoneNumberInput label="شماره تلفن" name="phoneNumber" />
+        <PhoneNumberInput label="شماره تلفن" name="phoneNumber" form={form} />
       </Col>
 
       <Col span={12}>
-        <EmailInput label="ایمیل" name="email" />
+        <EmailInput label="ایمیل" name="email" form={form} />
       </Col>
 
       <Col span={12}>
-        <NationalCodeInput name="nationalCode" label="کد ملی" />
+        <NationalCodeInput name="nationalCode" label="کد ملی" form={form} />
       </Col>
 
       <Col span={12}>
-        <AgeInput name="age" label="سن" />
+        <AgeInput name="age" label="سن" form={form} />
       </Col>
 
       <Col span={12}>
-        <GenderSelection name="gender" label="جنسیت" />
+        <GenderSelection name="gender" label="جنسیت" form={form} />
       </Col>
     </Row>
   );

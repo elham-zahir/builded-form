@@ -28,7 +28,13 @@ function App() {
   };
 
   return (
-    <ConfigProvider>
+    <ConfigProvider
+    // theme={{
+    //   token: {
+    //     colorPrimary: "#4daa9f",
+    //   },
+    // }}
+    >
       <Form
         name="userData"
         form={form}
@@ -40,15 +46,8 @@ function App() {
         className={styles.container}
       >
         <div className={styles.tabs}>
-          <TabsContainer />
+          <TabsContainer form={form} />
         </div>
-        {/* <div className={styles.formContainer}>
-              <TextAreaInput name="description" label="توضیحات" />
-          <Form.Item label={null}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item> */}
       </Form>
     </ConfigProvider>
   );

@@ -1,5 +1,5 @@
-import { Form, Input } from "antd";
-import React from "react";
+import { Form, FormInstance, Input } from "antd";
+import React, { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 
 interface IProps {
@@ -7,26 +7,48 @@ interface IProps {
   name: string;
   min?: number;
   max?: number;
+  form: FormInstance;
 }
 
-function EmailInput({ label, name }: IProps) {
+function EmailInput({ label, name, form }: IProps) {
+  const [isFocus, setIsFocus] = useState<boolean>(false);
+
   return (
-    <Form.Item
-      label={label}
-      name={name}
-      rules={[
-        {
-          required: true,
-          message: requiredValidation(),
-        },
-        {
-          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "لطفاً یک ایمیل معتبر وارد کنید.",
-        },
-      ]}
-    >
-      <Input type="text" />
-    </Form.Item>
+    <div className={"formItemContainer"}>
+      <p
+        className={"label"}
+        style={{
+          top: isFocus ? "-11px" : "17px",
+          color: isFocus ? "#4daa9f" : "#969696",
+          fontWeight: isFocus ? 600 : 400,
+        }}
+      >
+        {label}
+      </p>
+      <Form.Item
+        name={name}
+        rules={[
+          {
+            required: true,
+            message: requiredValidation(),
+          },
+          {
+            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "لطفاً یک ایمیل معتبر وارد کنید.",
+          },
+        ]}
+      >
+        <Input
+          type="text"
+          onClick={() => setIsFocus(true)}
+          onBlur={() => {
+            if (!form.getFieldValue(name)) {
+              setIsFocus(false);
+            }
+          }}
+        />
+      </Form.Item>
+    </div>
   );
 }
 

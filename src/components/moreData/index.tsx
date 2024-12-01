@@ -1,12 +1,21 @@
 import React from "react";
 import TextInput from "../textInput";
+import { Col, FormInstance, Row } from "antd";
 
-function MoreDataTab() {
+interface IProps {
+  form: FormInstance;
+}
+
+function MoreDataTab({ form }: IProps) {
   return (
-    <>
-      <TextInput label="نام" name="firstName" />
-      <TextInput label="نام خانوادگی" name="lastName" />
-    </>
+    <Row gutter={[20, 24]}>
+      <Col span={12}>
+        <TextInput label="نام" name="firstName" form={form} />
+      </Col>
+      <Col span={12}>
+        <TextInput label="نام خانوادگی" name="lastName" form={form} />
+      </Col>
+    </Row>
   );
 }
 
