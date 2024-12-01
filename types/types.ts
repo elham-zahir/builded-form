@@ -29,17 +29,7 @@ enum ETypeOfInput {
 
 export type TTypeOfInput = keyof typeof ETypeOfInput;
 
-export interface IInputValueType {
-  title: string;
-  name: TInputType;
-  type: TTypeOfInput;
-  tabIndex: number;
-  min?: number;
-  max?: number;
-  required?: boolean;
-  pattern?: string;
-  validator?: () => void;
-  onClick?: () => void;
-  onBlur?: () => void;
-  onChange?: () => void;
+export interface IOptionType {
+  name: string;
+  value: string;
 }

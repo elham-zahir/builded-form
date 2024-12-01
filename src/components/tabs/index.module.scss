@@ -1,0 +1,16 @@
+.tabLabel {
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  .tabIndex {
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

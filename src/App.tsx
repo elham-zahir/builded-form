@@ -1,12 +1,11 @@
 import React from "react";
-import { Button, ConfigProvider, Form, Input } from "antd";
+import { Button, Col, ConfigProvider, Form, Input, Row } from "antd";
 import styles from "./styles/index.module.scss";
 import "./styles/global.scss";
-import NameInput from "./components/nameInput";
+import TextInput from "./components/textInput";
 import PasswordInput from "./components/passwordInput";
 import EmailInput from "./components/emailInput";
 import PhoneNumberInput from "./components/phoneNumberInput";
-import nationalCodeValidation from "national-code-validation";
 import NationalCodeInput from "./components/nationalCodeInput";
 import AgeInput from "./components/ageInput";
 import GenderSelection from "./components/gender";
@@ -14,6 +13,8 @@ import TextAreaInput from "./components/textArea";
 import ImageUploader from "./components/imageUploader";
 import FileUploader from "./components/fileUploader";
 import RadioInput from "./components/radioInput";
+import CheckboxButtons from "./components/checkboxButton";
+import TabsContainer from "./components/tabs";
 
 function App() {
   const [form] = Form.useForm();
@@ -31,52 +32,23 @@ function App() {
       <Form
         name="userData"
         form={form}
-        className={styles.container}
         initialValues={{ remember: true }}
         onFinish={handleSubmit}
         onFinishFailed={handleError}
         autoComplete="off"
         layout="vertical"
+        className={styles.container}
       >
-        <NameInput label="نام" name="firstName" />
-        <NameInput label="نام خانوادگی" name="lastName" />
-
-        <PasswordInput label="رمز عبور" name="password" />
-        <PasswordInput label="تکرار رمز عبور" name="passwordRepeat" />
-
-        <EmailInput label="ایمیل" name="email" />
-
-        <PhoneNumberInput label="شماره تلفن" name="phoneNumber" />
-
-        <NationalCodeInput name="nationalCode" label="کد ملی" />
-
-        <AgeInput name="age" label="سن" />
-
-        <GenderSelection name="gender" label="جنسیت" />
-
-        <TextAreaInput name="description" label="توضیحات" />
-
-        <NameInput label="نام محصول" name="productName" />
-        <NameInput label="شعار" name="slogan" />
-
-        <ImageUploader name="imageUploader" label="لوگو" />
-
-        <FileUploader name="fileUploader" label="آپلودر فایل" />
-
-        <RadioInput
-          name="radio"
-          label="نوع خدمات درخواستی"
-          options={[
-            { name: "پشتیبانی دو ماهه", value: "value1" },
-            { name: "پشتیبانی 6 ماهه", value: "value2" },
-          ]}
-        />
-
-        <Form.Item label={null}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+        <div className={styles.tabs}>
+          <TabsContainer />
+        </div>
+        {/* <div className={styles.formContainer}>
+              <TextAreaInput name="description" label="توضیحات" />
+          <Form.Item label={null}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item> */}
       </Form>
     </ConfigProvider>
   );

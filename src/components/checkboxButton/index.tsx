@@ -1,7 +1,7 @@
 import React from "react";
-import { requiredValidation } from "../../utils/validator";
-import { Form, Radio } from "antd";
 import { IOptionType } from "../../../types/types";
+import { Checkbox, Form } from "antd";
+import { requiredValidation } from "../../utils/validator";
 
 interface IProps {
   name: string;
@@ -9,7 +9,7 @@ interface IProps {
   options: IOptionType[];
 }
 
-function RadioInput({ name, label, options }: IProps) {
+function CheckboxButtons({ name, label, options }: IProps) {
   return (
     <Form.Item
       label={label}
@@ -21,17 +21,17 @@ function RadioInput({ name, label, options }: IProps) {
         },
       ]}
     >
-      <Radio.Group>
+      <Checkbox.Group>
         {options.map((item: IOptionType, index: number) => {
           return (
-            <Radio value={item.value} key={index}>
+            <Checkbox value={item.value} key={index}>
               {item.name}
-            </Radio>
+            </Checkbox>
           );
         })}
-      </Radio.Group>
+      </Checkbox.Group>
     </Form.Item>
   );
 }
 
-export default RadioInput;
+export default CheckboxButtons;

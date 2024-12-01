@@ -13,7 +13,7 @@ interface IProps {
   max?: number;
 }
 
-function NameInput({ name, label, min = 2, max = 10 }: IProps) {
+function TextInput({ name, label, min = 2, max = 10 }: IProps) {
   return (
     <Form.Item
       label={label}
@@ -36,4 +36,4 @@ function NameInput({ name, label, min = 2, max = 10 }: IProps) {
   );
 }
 
-export default NameInput;
+export default TextInput;
