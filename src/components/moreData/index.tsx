@@ -1,6 +1,7 @@
 import TextInput from "../textInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
+import React from "react";
 
 function MoreDataTab({ form }: ITabProps) {
   return (

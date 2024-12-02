@@ -57,19 +57,19 @@ $black_color: rgb(41, 41, 41);
 
 .ant-tabs-tab {
   height: 50px !important;
-  margin-bottom: 50px !important;
+  margin-bottom: 40px !important;
   color: gray !important;
   font-weight: 500 !important;
-  font-size: 18px !important;
+  font-size: 17px !important;
   display: block;
 
   &::after {
-    height: 54px;
+    height: 44px;
     width: 3px;
     background-color: rgb(238, 238, 238);
     position: absolute;
-    bottom: -60px;
-    right: 42px;
+    bottom: -50px;
+    right: 40px;
     content: "";
     border-radius: 2px;
   }
@@ -147,4 +147,12 @@ $black_color: rgb(41, 41, 41);
 
 :where(.css-dev-only-do-not-override-1x0dypw).ant-form-item {
   margin-bottom: 0px !important;
+}
+
+:where(.css-dev-only-do-not-override-1x0dypw).ant-form-item
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::before {
+  content: "" !important;
 }

@@ -4,6 +4,7 @@ import { requiredValidation } from "../../utils/validator";
 import nationalCodeValidation from "national-code-validation";
 import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
+import React from "react";
 
 function NationalCodeInput({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);

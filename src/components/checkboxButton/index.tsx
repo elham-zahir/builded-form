@@ -1,6 +1,7 @@
 import { IOptionType, IRadioProps } from "../../types/types";
 import { Checkbox, Form } from "antd";
 import { requiredValidation } from "../../utils/validator";
+import React from "react";
 
 function CheckboxButtons({ name, label, options, required }: IRadioProps) {
   return (

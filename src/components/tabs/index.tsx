@@ -6,6 +6,7 @@ import BusinessData from "../businessData";
 import AccountInfoTab from "../accountInfo";
 import MoreDataTab from "../moreData";
 import SubmitButton from "../submitButton";
+import React from "react";
 
 interface IProps {
   form: FormInstance;
@@ -82,12 +83,14 @@ function TabsContainer({ form }: IProps) {
   };
 
   return (
-    <Tabs
-      tabPosition="left"
-      onChange={onChange}
-      activeKey={activeKey}
-      items={initialItems}
-    />
+    <>
+      <Tabs
+        tabPosition="left"
+        onChange={onChange}
+        activeKey={activeKey}
+        items={initialItems}
+      />
+    </>
   );
 }
 

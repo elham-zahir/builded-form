@@ -2,6 +2,7 @@ import { Button, Form, message, Tooltip, Upload } from "antd";
 import { useState } from "react";
 import { IUploaderProps } from "../../types/types";
 import { requiredValidation } from "../../utils/validator";
+import React from "react";
 
 function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);

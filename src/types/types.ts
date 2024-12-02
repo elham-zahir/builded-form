@@ -1,4 +1,5 @@
 import { FormInstance } from "antd";
+import { ReactNode } from "react";
 
 enum EInputType {
   firstName,
@@ -32,7 +33,7 @@ enum ETypeOfInput {
 export type TTypeOfInput = keyof typeof ETypeOfInput;
 
 export interface IOptionType {
-  name: string;
+  name: string | ReactNode;
   value: string;
 }
 

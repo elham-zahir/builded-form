@@ -5,6 +5,7 @@ import RadioInput from "../radioInput";
 import CheckboxButtons from "../checkboxButton";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
+import React from "react";
 
 function BusinessData({ form }: ITabProps) {
   return (

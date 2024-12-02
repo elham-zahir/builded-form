@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
+import React from "react";
 
 const genderOptions: IOptionType[] = [
   { value: "male", name: "مذکر" },

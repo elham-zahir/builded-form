@@ -6,6 +6,8 @@ import GenderSelection from "../gender";
 import EmailInput from "../emailInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
+import React from "react";
+import SampleIcon from "../../icons/AlIcon";
 
 function OwnerDataTab({ form }: ITabProps) {
   return (

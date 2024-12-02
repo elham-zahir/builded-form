@@ -2,6 +2,7 @@ import PasswordInput from "../passwordInput";
 import TextInput from "../textInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
+import React from "react";
 
 function AccountInfoTab({ form }: ITabProps) {
   return (

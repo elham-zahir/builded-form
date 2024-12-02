@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
+import React from "react";
 
 function EmailInput({ label, name, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
