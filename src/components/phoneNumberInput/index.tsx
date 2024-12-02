@@ -1,53 +1,43 @@
 import { Form, FormInstance, Input, Select } from "antd";
 import React, { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
-
-interface IProps {
-  name: string;
-  label: string;
-  form: FormInstance;
-}
+import { IOptionType, ITextProps } from "../../types/types";
 
 const { Option } = Select;
 
-interface IOptionType {
-  value: string;
-  label: string;
-}
-
 const countries: IOptionType[] = [
   {
-    label: "US +1",
+    name: "US +1",
     value: "+1",
   },
-  { label: "RU +7", value: "+7" },
+  { name: "RU +7", value: "+7" },
   {
-    label: "EG +20",
+    name: "EG +20",
     value: "+20",
   },
-  { label: "ZA +27", value: "+27" },
-  { label: "NL +31", value: "+31" },
-  { label: "BE +32", value: "+32" },
-  { label: "FR +33", value: "+33" },
-  { label: "ES +34", value: "+34" },
-  { label: "IT +39", value: "+39" },
-  { label: "CH +41", value: "+41" },
-  { label: "GB +44", value: "+44" },
-  { label: "SE +46", value: "+46" },
-  { label: "DE +49", value: "+49" },
-  { label: "MX +52", value: "+52" },
-  { label: "BR +55", value: "+55" },
-  { label: "MY +60", value: "+60" },
-  { label: "AU +61", value: "+61" },
-  { label: "TH +66", value: "+66" },
-  { label: "JP +81", value: "+81" },
-  { label: "KR +82", value: "+82" },
-  { label: "TR +90", value: "+90" },
-  { label: "IN +91", value: "+91" },
-  { label: "IR +98", value: "+98" },
+  { name: "ZA +27", value: "+27" },
+  { name: "NL +31", value: "+31" },
+  { name: "BE +32", value: "+32" },
+  { name: "FR +33", value: "+33" },
+  { name: "ES +34", value: "+34" },
+  { name: "IT +39", value: "+39" },
+  { name: "CH +41", value: "+41" },
+  { name: "GB +44", value: "+44" },
+  { name: "SE +46", value: "+46" },
+  { name: "DE +49", value: "+49" },
+  { name: "MX +52", value: "+52" },
+  { name: "BR +55", value: "+55" },
+  { name: "MY +60", value: "+60" },
+  { name: "AU +61", value: "+61" },
+  { name: "TH +66", value: "+66" },
+  { name: "JP +81", value: "+81" },
+  { name: "KR +82", value: "+82" },
+  { name: "TR +90", value: "+90" },
+  { name: "IN +91", value: "+91" },
+  { name: "IR +98", value: "+98" },
 ];
 
-function PhoneNumberInput({ name, label, form }: IProps) {
+function PhoneNumberInput({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   const onSearch = (value: string) => {};
@@ -63,7 +53,7 @@ function PhoneNumberInput({ name, label, form }: IProps) {
       {countries.map((item: IOptionType, index: number) => {
         return (
           <Option value={item.value} key={index}>
-            {item.label}
+            {item.name}
           </Option>
         );
       })}
@@ -86,7 +76,7 @@ function PhoneNumberInput({ name, label, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
           {
@@ -97,6 +87,7 @@ function PhoneNumberInput({ name, label, form }: IProps) {
         ]}
       >
         <Input
+          type="number"
           addonAfter={selectBefore}
           onClick={() => setIsFocus(true)}
           onBlur={() => {

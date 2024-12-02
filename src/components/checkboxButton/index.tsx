@@ -1,22 +1,15 @@
-import React from "react";
-import { IOptionType } from "../../../types/types";
+import { IOptionType, IRadioProps } from "../../types/types";
 import { Checkbox, Form } from "antd";
 import { requiredValidation } from "../../utils/validator";
 
-interface IProps {
-  name: string;
-  label: string;
-  options: IOptionType[];
-}
-
-function CheckboxButtons({ name, label, options }: IProps) {
+function CheckboxButtons({ name, label, options, required }: IRadioProps) {
   return (
     <Form.Item
       label={label}
       name={name}
       rules={[
         {
-          required: true,
+          required: required,
           message: requiredValidation(),
         },
       ]}

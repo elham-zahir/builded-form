@@ -1,14 +1,10 @@
 import { Button, Form, message, Tooltip, Upload } from "antd";
 import { RcFile } from "antd/es/upload";
 import React, { useState } from "react";
+import { IUploaderProps } from "../../types/types";
+import { requiredValidation } from "../../utils/validator";
 
-interface IProps {
-  name: string;
-  label: string;
-  max?: number;
-}
-
-function FileUploader({ name, label, max = 3 }: IProps) {
+function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
 
   const handleChange = ({ fileList: newFileList }: { fileList: any[] }) => {
@@ -31,7 +27,16 @@ function FileUploader({ name, label, max = 3 }: IProps) {
   };
 
   return (
-    <Form.Item label={label} name={name}>
+    <Form.Item
+      label={label}
+      name={name}
+      rules={[
+        {
+          required: required,
+          message: requiredValidation(),
+        },
+      ]}
+    >
       <Upload
         multiple={true}
         fileList={fileList}

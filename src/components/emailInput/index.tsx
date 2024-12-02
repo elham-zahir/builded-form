@@ -1,16 +1,9 @@
-import { Form, FormInstance, Input } from "antd";
-import React, { useState } from "react";
+import { Form, Input } from "antd";
+import { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
+import { ITextProps } from "../../types/types";
 
-interface IProps {
-  label: string;
-  name: string;
-  min?: number;
-  max?: number;
-  form: FormInstance;
-}
-
-function EmailInput({ label, name, form }: IProps) {
+function EmailInput({ label, name, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   return (
@@ -29,7 +22,7 @@ function EmailInput({ label, name, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
           {

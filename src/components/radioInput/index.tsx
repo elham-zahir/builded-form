@@ -1,22 +1,16 @@
 import React from "react";
 import { requiredValidation } from "../../utils/validator";
 import { Form, Radio } from "antd";
-import { IOptionType } from "../../../types/types";
+import { IOptionType, IRadioProps } from "../../types/types";
 
-interface IProps {
-  name: string;
-  label: string;
-  options: IOptionType[];
-}
-
-function RadioInput({ name, label, options }: IProps) {
+function RadioInput({ name, label, options, required }: IRadioProps) {
   return (
     <Form.Item
       label={label}
       name={name}
       rules={[
         {
-          required: true,
+          required: required,
           message: requiredValidation(),
         },
       ]}

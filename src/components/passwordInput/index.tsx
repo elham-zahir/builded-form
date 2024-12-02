@@ -1,16 +1,15 @@
-import { Form, FormInstance, Input } from "antd";
-import React, { useState } from "react";
+import { Form, Input } from "antd";
+import { useState } from "react";
 import { minValidation, requiredValidation } from "../../utils/validator";
+import { INumericProps } from "../../types/types";
 
-interface IProps {
-  name: string;
-  label: string;
-  min?: number;
-  max?: number;
-  form: FormInstance;
-}
-
-function PasswordInput({ name, label, min = 8, form }: IProps) {
+function PasswordInput({
+  name,
+  label,
+  min = 8,
+  form,
+  required,
+}: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   return (
@@ -29,7 +28,7 @@ function PasswordInput({ name, label, min = 8, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
           { min: min, message: minValidation(min) },

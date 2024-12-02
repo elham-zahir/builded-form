@@ -2,20 +2,16 @@ import { Form } from "antd";
 import React from "react";
 import { requiredValidation } from "../../utils/validator";
 import TextArea from "antd/es/input/TextArea";
+import { ITextProps } from "../../types/types";
 
-interface IProps {
-  name: string;
-  label: string;
-}
-
-function TextAreaInput({ name, label }: IProps) {
+function TextAreaInput({ name, label, form, required }: ITextProps) {
   return (
     <Form.Item
       label={label}
       name={name}
       rules={[
         {
-          required: true,
+          required: required,
           message: requiredValidation(),
         },
       ]}

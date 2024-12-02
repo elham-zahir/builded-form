@@ -1,26 +1,33 @@
-import React from "react";
 import PasswordInput from "../passwordInput";
 import TextInput from "../textInput";
-import { Col, FormInstance, Row } from "antd";
+import { Col, Row } from "antd";
+import { ITabProps } from "../../types/types";
 
-interface IProps {
-  form: FormInstance;
-}
-
-function AccountInfoTab({ form }: IProps) {
+function AccountInfoTab({ form }: ITabProps) {
   return (
     <Row gutter={[20, 24]}>
       <Col span={12}>
-        <TextInput label="نام کاربری" name="userName" form={form} />
+        <TextInput
+          label="نام کاربری"
+          name="userName"
+          form={form}
+          required={true}
+        />
       </Col>
       <Col span={12}>
-        <PasswordInput label="رمز عبور" name="password" form={form} />
+        <PasswordInput
+          label="رمز عبور"
+          name="password"
+          form={form}
+          required={true}
+        />
       </Col>
       <Col span={12}>
         <PasswordInput
           label="تکرار رمز عبور"
           name="passwordRepeat"
           form={form}
+          required={true}
         />
       </Col>
     </Row>

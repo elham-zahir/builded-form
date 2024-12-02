@@ -1,24 +1,14 @@
-import { Form, FormInstance, Select } from "antd";
-import React, { useState } from "react";
+import { Form, Select } from "antd";
+import { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
-
-interface IProps {
-  name: string;
-  label: string;
-  form: FormInstance;
-}
-
-interface IOptionType {
-  label: string;
-  value: string;
-}
+import { IOptionType, ITextProps } from "../../types/types";
 
 const genderOptions: IOptionType[] = [
-  { value: "male", label: "مذکر" },
-  { value: "female", label: "مونث" },
+  { value: "male", name: "مذکر" },
+  { value: "female", name: "مونث" },
 ];
 
-function GenderSelection({ name, label, form }: IProps) {
+function GenderSelection({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   return (
@@ -37,7 +27,7 @@ function GenderSelection({ name, label, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
         ]}
@@ -54,7 +44,7 @@ function GenderSelection({ name, label, form }: IProps) {
           {genderOptions.map((item: IOptionType, index: number) => {
             return (
               <Select.Option value={item.value} key={index}>
-                {item.label}
+                {item.name}
               </Select.Option>
             );
           })}

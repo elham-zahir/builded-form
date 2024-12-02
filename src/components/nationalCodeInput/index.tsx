@@ -1,15 +1,10 @@
-import { Form, FormInstance, Input } from "antd";
-import React, { useState } from "react";
+import { Form, Input } from "antd";
+import { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import nationalCodeValidation from "national-code-validation";
+import { ITextProps } from "../../types/types";
 
-interface IProps {
-  name: string;
-  label: string;
-  form: FormInstance;
-}
-
-function NationalCodeInput({ name, label, form }: IProps) {
+function NationalCodeInput({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   return (
@@ -28,7 +23,7 @@ function NationalCodeInput({ name, label, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
           {

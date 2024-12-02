@@ -1,13 +1,9 @@
 import { Button, Form, message, Tooltip, Upload } from "antd";
-import { RcFile } from "antd/es/upload";
-import React, { useState } from "react";
+import { useState } from "react";
+import { IUploaderProps } from "../../types/types";
+import { requiredValidation } from "../../utils/validator";
 
-interface IProps {
-  name: string;
-  label: string;
-}
-
-function ImageUploader({ name, label }: IProps) {
+function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
 
   const handleChange = ({ fileList: newFileList }: { fileList: any[] }) => {
@@ -24,27 +20,42 @@ function ImageUploader({ name, label }: IProps) {
 
   const customRequest = ({ file, onSuccess, onError }: any) => {
     // onSuccess?.({}, file);
-    onSuccess?.(message.success("فایل با موفقیت آپلود شد."));
+    onSuccess?.(message.success("عکس با موفقیت آپلود شد."));
   };
 
   return (
-    <Form.Item label={label} name={name}>
+    <Form.Item
+      label={label}
+      name={name}
+      rules={[
+        {
+          required: required,
+          message: requiredValidation(),
+        },
+        {
+          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          message: "لطفاً یک ایمیل معتبر وارد کنید.",
+        },
+      ]}
+    >
       <Upload
         multiple={true}
         fileList={fileList}
         onChange={handleChange}
         showUploadList={{ showRemoveIcon: true }}
-        maxCount={3}
+        maxCount={max}
         customRequest={customRequest}
       >
         <Tooltip
           title={
-            fileList.length >= 3
-              ? "حداکثر سه فایل می توانید اپلود کنید"
+            fileList.length >= max
+              ? `حداکثر ${max}  عکس می توانید آپلود کنید.`
               : undefined
           }
         >
-          <Button disabled={fileList.length >= 3}>Upload (Max 3 files)</Button>
+          <Button disabled={fileList.length >= max}>
+            Upload (Max {max} files)
+          </Button>
         </Tooltip>
       </Upload>
     </Form.Item>

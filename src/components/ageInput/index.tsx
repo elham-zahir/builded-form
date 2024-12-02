@@ -1,16 +1,16 @@
-import { Form, FormInstance, Input } from "antd";
-import React, { useState } from "react";
+import { Form, Input } from "antd";
+import { useState } from "react";
 import { requiredValidation } from "../../utils/validator";
+import { INumericProps } from "../../types/types";
 
-interface IProps {
-  name: string;
-  label: string;
-  min?: number;
-  max?: number;
-  form: FormInstance;
-}
-
-function AgeInput({ name, label, min = 0, max = 99, form }: IProps) {
+function AgeInput({
+  name,
+  label,
+  min = 0,
+  max = 99,
+  form,
+  required,
+}: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   return (
@@ -29,7 +29,7 @@ function AgeInput({ name, label, min = 0, max = 99, form }: IProps) {
         name={name}
         rules={[
           {
-            required: true,
+            required: required,
             message: requiredValidation(),
           },
           {
