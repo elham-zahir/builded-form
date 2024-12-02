@@ -1,7 +1,8 @@
 import { Form, Select } from "antd";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ITextProps } from "../../types/types";
+import InputTitle from "../inputTitle";
 
 const genderOptions: IOptionType[] = [
   { value: "male", name: "مذکر" },
@@ -10,19 +11,20 @@ const genderOptions: IOptionType[] = [
 
 function GenderSelection({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
+  const inputRef = useRef<any>(null);
 
   return (
     <div className={"formItemContainer"}>
-      <p
-        className={"label"}
-        style={{
-          top: isFocus ? "-11px" : "17px",
-          color: isFocus ? "#4daa9f" : "#969696",
-          fontWeight: isFocus ? 600 : 400,
+      <InputTitle
+        isFocus={isFocus}
+        label={label}
+        onClick={() => {
+          if (!form.getFieldValue(name) && inputRef.current) {
+            inputRef.current.focus();
+            setIsFocus(true);
+          }
         }}
-      >
-        {label}
-      </p>
+      />
       <Form.Item
         name={name}
         rules={[
@@ -33,6 +35,7 @@ function GenderSelection({ name, label, form, required }: ITextProps) {
         ]}
       >
         <Select
+          ref={inputRef}
           allowClear
           onClick={() => setIsFocus(true)}
           onBlur={() => {

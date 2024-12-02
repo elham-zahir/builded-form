@@ -1,7 +1,8 @@
 import { Form, FormInstance, Input, Select } from "antd";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ITextProps } from "../../types/types";
+import InputTitle from "../inputTitle";
 
 const { Option } = Select;
 
@@ -39,6 +40,7 @@ const countries: IOptionType[] = [
 
 function PhoneNumberInput({ name, label, form, required }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
+  const inputRef = useRef<any>(null);
 
   const onSearch = (value: string) => {};
 
@@ -62,16 +64,16 @@ function PhoneNumberInput({ name, label, form, required }: ITextProps) {
 
   return (
     <div className={"formItemContainer"}>
-      <p
-        className={"label"}
-        style={{
-          top: isFocus ? "-11px" : "17px",
-          color: isFocus ? "#4daa9f" : "#969696",
-          fontWeight: isFocus ? 600 : 400,
+      <InputTitle
+        isFocus={isFocus}
+        label={label}
+        onClick={() => {
+          if (!form.getFieldValue(name) && inputRef.current) {
+            inputRef.current.focus();
+            setIsFocus(true);
+          }
         }}
-      >
-        {label}
-      </p>
+      />
       <Form.Item
         name={name}
         rules={[
@@ -87,6 +89,7 @@ function PhoneNumberInput({ name, label, form, required }: ITextProps) {
         ]}
       >
         <Input
+          ref={inputRef}
           type="number"
           addonAfter={selectBefore}
           onClick={() => setIsFocus(true)}

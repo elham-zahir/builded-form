@@ -1,11 +1,12 @@
 import { Form, Input } from "antd";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   maxValidation,
   minValidation,
   requiredValidation,
 } from "../../utils/validator";
 import { INumericProps } from "../../types/types";
+import InputTitle from "../inputTitle";
 
 function TextInput({
   name,
@@ -16,19 +17,20 @@ function TextInput({
   required,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
+  const inputRef = useRef<any>(null);
 
   return (
     <div className={"formItemContainer"}>
-      <p
-        className={"label"}
-        style={{
-          top: isFocus ? "-11px" : "17px",
-          color: isFocus ? "#4daa9f" : "#969696",
-          fontWeight: isFocus ? 600 : 400,
+      <InputTitle
+        isFocus={isFocus}
+        label={label}
+        onClick={() => {
+          if (!form.getFieldValue(name) && inputRef.current) {
+            inputRef.current.focus();
+            setIsFocus(true);
+          }
         }}
-      >
-        {label}
-      </p>
+      />
       <Form.Item
         name={name}
         rules={[
@@ -46,6 +48,7 @@ function TextInput({
       >
         <Input
           type="text"
+          ref={inputRef}
           onClick={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
