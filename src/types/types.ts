@@ -28,13 +28,22 @@ enum ETypeOfInput {
   text,
   number,
   date,
+  uploader,
+  textArea,
+  checkbox,
+  radio,
+  select,
+  phoneNumber,
+  url,
+  range,
+  search,
 }
 
 export type TTypeOfInput = keyof typeof ETypeOfInput;
 
 export interface IOptionType {
   name: string | ReactNode;
-  value: string;
+  value: string | boolean;
 }
 
 export interface ITabProps {
@@ -64,9 +73,36 @@ export interface ITextProps {
   required: boolean;
 }
 
+export interface ISelectProps {
+  label: string;
+  name: string;
+  form: FormInstance;
+  required: boolean;
+  options: IOptionType[];
+}
+
+export interface ITextAreaProps {
+  label: string;
+  name: string;
+  form: FormInstance;
+  required: boolean;
+  max?: number;
+}
+
 export interface IUploaderProps {
   name: string;
   label: string;
   max?: number;
   required: boolean;
+}
+
+export interface IFieldType {
+  label: string;
+  name: string;
+  type: IOptionType;
+  min?: number;
+  max?: number;
+  options?: IOptionType;
+  required: boolean;
+  pattern?: RegExp;
 }

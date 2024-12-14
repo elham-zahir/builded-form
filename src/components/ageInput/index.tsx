@@ -1,11 +1,13 @@
-import { Form, Input } from "antd";
+import { Form, Input, InputNumber } from "antd";
 import { useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { INumericProps } from "../../types/types";
 import InputTitle from "../inputTitle";
 import React from "react";
+import PlusIcon from "../../icons/PlusIcon";
+import MinusIcon from "../../icons/MinusIcon";
 
-function AgeInput({
+function NumberInput({
   name,
   label,
   min = 0,
@@ -21,6 +23,7 @@ function AgeInput({
       <InputTitle
         isFocus={isFocus}
         label={label}
+        required={required}
         onClick={() => {
           if (!form.getFieldValue(name) && inputRef.current) {
             inputRef.current.focus();
@@ -52,9 +55,9 @@ function AgeInput({
           },
         ]}
       >
-        <Input
-          ref={inputRef}
+        <InputNumber
           type="number"
+          ref={inputRef}
           min={min}
           max={max}
           onClick={() => setIsFocus(true)}
@@ -63,10 +66,12 @@ function AgeInput({
               setIsFocus(false);
             }
           }}
+          onChange={() => setIsFocus(true)}
+          controls={{ upIcon: <PlusIcon />, downIcon: <MinusIcon /> }}
         />
       </Form.Item>
     </div>
   );
 }
 
-export default AgeInput;
+export default NumberInput;

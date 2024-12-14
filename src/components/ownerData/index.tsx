@@ -2,12 +2,10 @@ import TextInput from "../textInput";
 import PhoneNumberInput from "../phoneNumberInput";
 import NationalCodeInput from "../nationalCodeInput";
 import AgeInput from "../ageInput";
-import GenderSelection from "../gender";
+import SelectionInput from "../gender";
 import EmailInput from "../emailInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
-import React from "react";
-import SampleIcon from "../../icons/AlIcon";
 
 function OwnerDataTab({ form }: ITabProps) {
   return (
@@ -52,7 +50,11 @@ function OwnerDataTab({ form }: ITabProps) {
       </Col>
 
       <Col span={12}>
-        <GenderSelection
+        <SelectionInput
+          options={[
+            { value: "male", name: "مذکر" },
+            { value: "female", name: "مونث" },
+          ]}
           name="gender"
           label="جنسیت"
           form={form}

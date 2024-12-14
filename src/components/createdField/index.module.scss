@@ -1,0 +1,54 @@
+$primary_color: #4daa9f;
+
+.field {
+  background-color: white;
+  width: 100%;
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 6px;
+  border: 1px solid $primary_color;
+
+  .fieldName {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  .fieldActions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    .editButton {
+      background-color: $primary_color;
+      color: white;
+      margin-left: 16px;
+      box-shadow: none !important;
+      font-weight: 600;
+      border: none;
+      line-height: 1;
+
+      &:hover {
+        border: none;
+        background-color: $primary_color;
+        color: white;
+      }
+    }
+
+    .removeButton {
+      background-color: rgb(221, 45, 45);
+      color: white;
+      box-shadow: none !important;
+      font-weight: 600;
+      border: none;
+      line-height: 1;
+
+      &:hover {
+        border: none;
+        background-color: rgb(221, 45, 45);
+        color: white;
+      }
+    }
+  }
+}

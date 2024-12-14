@@ -1,12 +1,11 @@
-import React from "react";
-
 interface IProps {
   isFocus: boolean;
   label: string;
+  required: boolean;
   onClick: () => void;
 }
 
-function InputTitle({ isFocus, label, onClick }: IProps) {
+function InputTitle({ isFocus, label, required, onClick }: IProps) {
   return (
     <p
       className={"label"}
@@ -18,6 +17,7 @@ function InputTitle({ isFocus, label, onClick }: IProps) {
       onClick={onClick}
     >
       {label}
+      <span className="requirement">{required ? "(اجباری)" : ""}</span>
     </p>
   );
 }

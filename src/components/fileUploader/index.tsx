@@ -1,8 +1,10 @@
 import { Button, Form, message, Tooltip, Upload } from "antd";
-import { RcFile } from "antd/es/upload";
 import React, { useState } from "react";
 import { IUploaderProps } from "../../types/types";
+import UploadIcon from "../../icons/UploadIcon";
 import { requiredValidation } from "../../utils/validator";
+
+const { Dragger } = Upload;
 
 function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
@@ -28,7 +30,12 @@ function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
 
   return (
     <Form.Item
-      label={label}
+      label={
+        <>
+          {label}
+          <span className="requirement">{required ? "(اجباری)" : ""}</span>
+        </>
+      }
       name={name}
       rules={[
         {
@@ -37,7 +44,8 @@ function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
         },
       ]}
     >
-      <Upload
+      <Dragger
+        disabled={fileList?.length >= max}
         multiple={true}
         fileList={fileList}
         onChange={handleChange}
@@ -49,15 +57,16 @@ function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
         <Tooltip
           title={
             fileList.length >= max
-              ? `حداکثر  ${max} فایل می توانید آپلود کنید.`
+              ? `حداکثر ${max}  فایل می توانید آپلود کنید.`
               : undefined
           }
         >
-          <Button disabled={fileList.length >= max}>
-            Upload (Max {max} files)
-          </Button>
+          <UploadIcon />
+          <p className="uploaderText">
+            حداکثر {max} فایل می توانید آپلود کنید.
+          </p>
         </Tooltip>
-      </Upload>
+      </Dragger>
     </Form.Item>
   );
 }

@@ -20,6 +20,7 @@ function PasswordInput({
       <InputTitle
         isFocus={isFocus}
         label={label}
+        required={required}
         onClick={() => {
           if (!form.getFieldValue(name) && inputRef.current) {
             inputRef.current.focus();

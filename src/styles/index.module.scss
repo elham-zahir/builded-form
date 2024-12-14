@@ -35,7 +35,27 @@ code {
   justify-content: space-between;
 }
 
+.formCreatorContainer {
+  width: 40%;
+  padding: 30px;
+  border-radius: 0 20px 20px 0;
+  background-color: white;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
 .tabs {
   width: 100%;
   border-radius: 20px;
+}
+
+.fieldsContainer {
+  width: 60%;
+  padding: 30px;
+  border-radius: 20px 0 0 20px;
+  background-color: $primary_lighter_color;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }

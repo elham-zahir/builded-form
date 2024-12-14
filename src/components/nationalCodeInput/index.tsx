@@ -15,6 +15,7 @@ function NationalCodeInput({ name, label, form, required }: ITextProps) {
       <InputTitle
         isFocus={isFocus}
         label={label}
+        required={required}
         onClick={() => {
           if (!form.getFieldValue(name) && inputRef.current) {
             inputRef.current.focus();
@@ -32,7 +33,10 @@ function NationalCodeInput({ name, label, form, required }: ITextProps) {
           {
             validator(_, value) {
               const validationResult = nationalCodeValidation(value);
-              if (validationResult.length) {
+              if (!value?.length) {
+                return Promise.reject(new Error("این فیلد الزامی است"));
+              }
+              if (validationResult?.length) {
                 return Promise.reject(new Error(validationResult));
               }
               return Promise.resolve();

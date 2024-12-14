@@ -1,8 +1,11 @@
-import { Button, Form, message, Tooltip, Upload } from "antd";
+import { Form, message, Tooltip, Upload } from "antd";
 import { useState } from "react";
 import { IUploaderProps } from "../../types/types";
 import { requiredValidation } from "../../utils/validator";
 import React from "react";
+import UploadIcon from "../../icons/UploadIcon";
+
+const { Dragger } = Upload;
 
 function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
@@ -26,20 +29,22 @@ function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
 
   return (
     <Form.Item
-      label={label}
+      label={
+        <>
+          {label}
+          <span className="requirement">{required ? "(اجباری)" : ""}</span>
+        </>
+      }
       name={name}
       rules={[
         {
           required: required,
           message: requiredValidation(),
         },
-        {
-          pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          message: "لطفاً یک ایمیل معتبر وارد کنید.",
-        },
       ]}
     >
-      <Upload
+      <Dragger
+        disabled={fileList?.length >= max}
         multiple={true}
         fileList={fileList}
         onChange={handleChange}
@@ -54,11 +59,10 @@ function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
               : undefined
           }
         >
-          <Button disabled={fileList.length >= max}>
-            Upload (Max {max} files)
-          </Button>
+          <UploadIcon />
+          <p className="uploaderText">حداکثر {max} عکس می توانید آپلود کنید.</p>
         </Tooltip>
-      </Upload>
+      </Dragger>
     </Form.Item>
   );
 }

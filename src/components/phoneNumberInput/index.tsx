@@ -272,9 +272,8 @@ function PhoneNumberInput({ name, label, form, required }: ITextProps) {
       defaultValue="+98"
       style={{ width: 60 }}
       onSearch={onSearch}
-      allowClear
       suffixIcon={<DownIcon />}
-      clearIcon={<CloseIcon />}
+      allowClear={{ clearIcon: <CloseIcon /> }}
     >
       {countries.map((item: IOptionType, index: number) => {
         return (
@@ -291,6 +290,7 @@ function PhoneNumberInput({ name, label, form, required }: ITextProps) {
       <InputTitle
         isFocus={isFocus}
         label={label}
+        required={required}
         onClick={() => {
           if (!form.getFieldValue(name) && inputRef.current) {
             inputRef.current.focus();
