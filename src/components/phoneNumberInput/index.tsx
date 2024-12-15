@@ -260,7 +260,14 @@ const countries: IOptionType[] = [
   },
 ];
 
-function PhoneNumberInput({ name, label, form, required }: ITextProps) {
+function PhoneNumberInput({
+  name,
+  label,
+  form,
+  required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+}: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
@@ -306,9 +313,8 @@ function PhoneNumberInput({ name, label, form, required }: ITextProps) {
             message: requiredValidation(),
           },
           {
-            pattern: /^9\d{9}$/,
-            message:
-              "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 9 شروع شود و 10 رقم باشد).",
+            pattern: pattern,
+            message: pattenErrorMessage,
           },
         ]}
       >

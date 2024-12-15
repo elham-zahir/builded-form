@@ -1,5 +1,5 @@
 import { Form, Input, InputNumber } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { INumericProps } from "../../types/types";
 import InputTitle from "../inputTitle";
@@ -14,9 +14,14 @@ function NumberInput({
   max = 99,
   form,
   required,
+  isEditMode,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode]);
 
   return (
     <div className={"formItemContainer"}>

@@ -6,7 +6,14 @@ import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
 import React from "react";
 
-function NationalCodeInput({ name, label, form, required }: ITextProps) {
+function NationalCodeInput({
+  name,
+  label,
+  form,
+  required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+}: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
@@ -30,10 +37,11 @@ function NationalCodeInput({ name, label, form, required }: ITextProps) {
             required: required,
             message: requiredValidation(),
           },
+          { pattern: pattern, message: pattenErrorMessage },
           {
             validator(_, value) {
               const validationResult = nationalCodeValidation(value);
-              if (!value?.length) {
+              if (!value?.length && required) {
                 return Promise.reject(new Error("این فیلد الزامی است"));
               }
               if (validationResult?.length) {

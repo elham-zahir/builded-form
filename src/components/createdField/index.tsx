@@ -1,39 +1,45 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Popconfirm, Row } from "antd";
 import PenIcon from "../../icons/PenIcon";
 import TrashIcon from "../../icons/RemoveIcon";
 
 interface IProps {
   name: string;
-  key: number;
+  index: number;
   onEdit: (key: number) => void;
   onRemove: (key: number) => void;
 }
 
-function CreatedField({ name, key, onEdit, onRemove }: IProps) {
+function CreatedField({ name, index, onEdit, onRemove }: IProps) {
   return (
-    <Row key={key} className={styles.field}>
+    <Row className={styles.field}>
       <Col span={12} className={styles.fieldName}>
         {name}
       </Col>
       <Col span={12} className={styles.fieldActions}>
         <Button
           htmlType="button"
-          onClick={() => onEdit(key)}
+          onClick={() => {
+            onEdit(index);
+          }}
           className={styles.editButton}
         >
           <PenIcon />
           ویرایش
         </Button>
-        <Button
-          htmlType="button"
-          onClick={() => onRemove(key)}
-          className={styles.removeButton}
+        <Popconfirm
+          title="حذف آیتم"
+          description="برای حذف این آیتم مطمعن هستید؟"
+          onConfirm={() => onRemove(index)}
+          okText="بله"
+          cancelText="خیر"
         >
-          <TrashIcon />
-          حذف
-        </Button>
+          <Button htmlType="button" className={styles.removeButton}>
+            <TrashIcon />
+            حذف
+          </Button>
+        </Popconfirm>
       </Col>
     </Row>
   );

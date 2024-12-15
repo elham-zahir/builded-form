@@ -5,7 +5,14 @@ import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
 import React from "react";
 
-function EmailInput({ label, name, form, required }: ITextProps) {
+function EmailInput({
+  label,
+  name,
+  form,
+  required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+}: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
@@ -30,8 +37,8 @@ function EmailInput({ label, name, form, required }: ITextProps) {
             message: requiredValidation(),
           },
           {
-            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: "لطفاً یک ایمیل معتبر وارد کنید.",
+            pattern: pattern,
+            message: pattenErrorMessage,
           },
         ]}
       >

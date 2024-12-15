@@ -1,5 +1,5 @@
 import { Form, Select } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ISelectProps } from "../../types/types";
 import InputTitle from "../inputTitle";
@@ -13,9 +13,16 @@ function SelectionInput({
   form,
   required,
   options,
+  pattern = undefined,
+  pattenErrorMessage = "",
+  isEditMode,
 }: ISelectProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode]);
 
   return (
     <div className={"formItemContainer"}>
@@ -37,6 +44,7 @@ function SelectionInput({
             required: required,
             message: requiredValidation(),
           },
+          { pattern: pattern, message: pattenErrorMessage },
         ]}
       >
         <Select
@@ -52,7 +60,7 @@ function SelectionInput({
         >
           {options.map((item: IOptionType, index: number) => {
             return (
-              <Select.Option value={item} key={index}>
+              <Select.Option value={item.value} key={index}>
                 {item.name}
               </Select.Option>
             );

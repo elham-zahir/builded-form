@@ -4,16 +4,19 @@ $primary_color: #4daa9f;
   margin: 0 !important;
 }
 
-.submitButton {
+.resetButton {
   height: 50px !important;
-  background-color: $primary_color;
+  background-color: white;
   // border-radius: 20px;
   font-size: 15px !important;
   font-weight: 600 !important;
   // padding: 6px 30px;
   width: 100%;
+  color: $primary_color;
+  border: 1px solid $primary_color;
 
   &:hover {
-    background-color: $primary_color !important;
+    background-color: white !important;
+    color: $primary_color !important;
   }
 }

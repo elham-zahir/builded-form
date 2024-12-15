@@ -11,6 +11,8 @@ function TextAreaInput({
   form,
   required,
   max = 100,
+  pattern = undefined,
+  pattenErrorMessage = "",
 }: ITextAreaProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -35,6 +37,7 @@ function TextAreaInput({
             required: required,
             message: requiredValidation(),
           },
+          { pattern: pattern, message: pattenErrorMessage },
         ]}
       >
         <TextArea

@@ -57,6 +57,9 @@ export interface INumericProps {
   max?: number;
   form: FormInstance;
   required: boolean;
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
+  isEditMode?: boolean;
 }
 
 export interface IRadioProps {
@@ -64,6 +67,9 @@ export interface IRadioProps {
   label: string;
   options: IOptionType[];
   required: boolean;
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
+  isEditMode?: boolean;
 }
 
 export interface ITextProps {
@@ -71,6 +77,9 @@ export interface ITextProps {
   name: string;
   form: FormInstance;
   required: boolean;
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
+  isEditMode?: boolean;
 }
 
 export interface ISelectProps {
@@ -79,6 +88,9 @@ export interface ISelectProps {
   form: FormInstance;
   required: boolean;
   options: IOptionType[];
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
+  isEditMode?: boolean;
 }
 
 export interface ITextAreaProps {
@@ -87,6 +99,8 @@ export interface ITextAreaProps {
   form: FormInstance;
   required: boolean;
   max?: number;
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
 }
 
 export interface IUploaderProps {
@@ -94,15 +108,19 @@ export interface IUploaderProps {
   label: string;
   max?: number;
   required: boolean;
+  pattern?: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
 }
 
 export interface IFieldType {
   label: string;
   name: string;
   type: IOptionType;
-  min?: number;
-  max?: number;
-  options?: IOptionType;
-  required: boolean;
-  pattern?: RegExp;
+  min: number;
+  max: number;
+  options: IOptionType[];
+  required: boolean | boolean[];
+  pattern: RegExp | undefined;
+  pattenErrorMessage?: string | undefined;
+  id: number;
 }

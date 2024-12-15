@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   maxValidation,
   minValidation,
@@ -12,12 +12,19 @@ function TextInput({
   name,
   label,
   min = 2,
-  max = 10,
+  max = 100,
   form,
   required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+  isEditMode = false,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode]);
 
   return (
     <div className={"formItemContainer"}>
@@ -36,8 +43,8 @@ function TextInput({
         name={name}
         rules={[
           {
-            pattern: /^[A-Za-zآ-ی]+$/,
-            message: "لطفاً فقط از حروف الفبا و حروف فارسی استفاده کنید",
+            pattern: pattern,
+            message: pattenErrorMessage,
           },
           {
             required: required,

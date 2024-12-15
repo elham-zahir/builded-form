@@ -24,7 +24,7 @@ function TabsContainer({ form }: IProps) {
       children: (
         <>
           <OwnerDataTab form={form} />
-          <SubmitButton />
+          {/* <SubmitButton /> */}
         </>
       ),
       key: "1",
@@ -39,7 +39,7 @@ function TabsContainer({ form }: IProps) {
       children: (
         <>
           <BusinessData form={form} />
-          <SubmitButton />
+          {/* <SubmitButton /> */}
         </>
       ),
       key: "2",
@@ -54,7 +54,7 @@ function TabsContainer({ form }: IProps) {
       children: (
         <>
           <AccountInfoTab form={form} />
-          <SubmitButton />
+          {/* <SubmitButton /> */}
         </>
       ),
       key: "3",
@@ -69,7 +69,7 @@ function TabsContainer({ form }: IProps) {
       children: (
         <>
           <MoreDataTab form={form} />
-          <SubmitButton />
+          {/* <SubmitButton /> */}
         </>
       ),
       key: "4",

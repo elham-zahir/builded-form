@@ -3,7 +3,14 @@ import { Checkbox, Form } from "antd";
 import { requiredValidation } from "../../utils/validator";
 import React from "react";
 
-function CheckboxButtons({ name, label, options, required }: IRadioProps) {
+function CheckboxButtons({
+  name,
+  label,
+  options,
+  required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+}: IRadioProps) {
   return (
     <Form.Item
       label={label}
@@ -13,6 +20,7 @@ function CheckboxButtons({ name, label, options, required }: IRadioProps) {
           required: required,
           message: requiredValidation(),
         },
+        { pattern: pattern, message: pattenErrorMessage },
       ]}
     >
       <Checkbox.Group>

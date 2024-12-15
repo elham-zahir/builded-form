@@ -3,7 +3,14 @@ import { requiredValidation } from "../../utils/validator";
 import { Form, Radio } from "antd";
 import { IOptionType, IRadioProps } from "../../types/types";
 
-function RadioInput({ name, label, options, required }: IRadioProps) {
+function RadioInput({
+  name,
+  label,
+  options,
+  required,
+  pattern = undefined,
+  pattenErrorMessage = "",
+}: IRadioProps) {
   return (
     <Form.Item
       label={label}
@@ -13,6 +20,7 @@ function RadioInput({ name, label, options, required }: IRadioProps) {
           required: required,
           message: requiredValidation(),
         },
+        { pattern: pattern, message: pattenErrorMessage },
       ]}
     >
       <Radio.Group>

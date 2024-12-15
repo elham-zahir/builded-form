@@ -11,6 +11,8 @@ function PasswordInput({
   min = 8,
   form,
   required,
+  pattern = undefined,
+  pattenErrorMessage = "",
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -37,9 +39,8 @@ function PasswordInput({
           },
           { min: min, message: minValidation(min) },
           {
-            pattern: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).*$/,
-            message:
-              "پسورد باید حداقل شامل یک حرف انگلیسی، یک عدد و یک کاراکتر خاص باشد.",
+            pattern: pattern,
+            message: pattenErrorMessage,
           },
         ]}
       >

@@ -1,8 +1,8 @@
 import TextInput from "../textInput";
 import PhoneNumberInput from "../phoneNumberInput";
 import NationalCodeInput from "../nationalCodeInput";
-import AgeInput from "../ageInput";
-import SelectionInput from "../gender";
+import AgeInput from "../numberInput";
+import SelectionInput from "../selectionInput";
 import EmailInput from "../emailInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
