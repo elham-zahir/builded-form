@@ -41,6 +41,15 @@ enum ETypeOfInput {
 
 export type TTypeOfInput = keyof typeof ETypeOfInput;
 
+enum ECategory {
+  person,
+  job,
+  account,
+  others,
+}
+
+export type TCategory = keyof typeof ECategory;
+
 export interface IOptionType {
   name: string | ReactNode;
   value: string | boolean;
@@ -48,6 +57,7 @@ export interface IOptionType {
 
 export interface ITabProps {
   form: FormInstance;
+  fields: IFieldType[];
 }
 
 export interface INumericProps {
@@ -58,7 +68,7 @@ export interface INumericProps {
   form: FormInstance;
   required: boolean;
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
   isEditMode?: boolean;
 }
 
@@ -68,7 +78,7 @@ export interface IRadioProps {
   options: IOptionType[];
   required: boolean;
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
   isEditMode?: boolean;
 }
 
@@ -78,7 +88,7 @@ export interface ITextProps {
   form: FormInstance;
   required: boolean;
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
   isEditMode?: boolean;
 }
 
@@ -89,7 +99,7 @@ export interface ISelectProps {
   required: boolean;
   options: IOptionType[];
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
   isEditMode?: boolean;
 }
 
@@ -98,9 +108,10 @@ export interface ITextAreaProps {
   name: string;
   form: FormInstance;
   required: boolean;
+  min?: number;
   max?: number;
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
 }
 
 export interface IUploaderProps {
@@ -109,7 +120,7 @@ export interface IUploaderProps {
   max?: number;
   required: boolean;
   pattern?: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
 }
 
 export interface IFieldType {
@@ -118,9 +129,17 @@ export interface IFieldType {
   type: IOptionType;
   min: number;
   max: number;
-  options: IOptionType[];
-  required: boolean | boolean[];
+  options: IOptionType[] | undefined;
+  required: boolean;
   pattern: RegExp | undefined;
-  pattenErrorMessage?: string | undefined;
+  patternErrorMessage?: string | undefined;
   id: number;
+  category: TCategory;
+}
+
+export interface FormCategories {
+  personFields: IFieldType[];
+  jobFields: IFieldType[];
+  accountFields: IFieldType[];
+  othersFields: IFieldType[];
 }

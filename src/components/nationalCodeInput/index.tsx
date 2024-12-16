@@ -12,7 +12,7 @@ function NationalCodeInput({
   form,
   required,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage,
 }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -37,17 +37,22 @@ function NationalCodeInput({
             required: required,
             message: requiredValidation(),
           },
-          { pattern: pattern, message: pattenErrorMessage },
+          {
+            pattern: pattern,
+            message: patternErrorMessage || "مقدار ورودی معتبر نمی باشد.",
+          },
           {
             validator(_, value) {
-              const validationResult = nationalCodeValidation(value);
-              if (!value?.length && required) {
-                return Promise.reject(new Error("این فیلد الزامی است"));
+              if (required) {
+                const validationResult = nationalCodeValidation(value);
+                if (!value?.length) {
+                  return Promise.reject(new Error("این فیلد الزامی است"));
+                }
+                if (validationResult?.length) {
+                  return Promise.reject(new Error(validationResult));
+                }
+                return Promise.resolve();
               }
-              if (validationResult?.length) {
-                return Promise.reject(new Error(validationResult));
-              }
-              return Promise.resolve();
             },
           },
         ]}

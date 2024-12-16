@@ -1,16 +1,14 @@
-import TextInput from "../textInput";
-import PhoneNumberInput from "../phoneNumberInput";
-import NationalCodeInput from "../nationalCodeInput";
-import AgeInput from "../numberInput";
-import SelectionInput from "../selectionInput";
-import EmailInput from "../emailInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
+import { fieldType } from "../../utils/validator";
 
-function OwnerDataTab({ form }: ITabProps) {
+function OwnerDataTab({ form, fields }: ITabProps) {
   return (
     <Row gutter={[20, 24]}>
-      <Col span={12}>
+      {fields.map((item) => {
+        return <Col span={12}>{fieldType(item, form)}</Col>;
+      })}
+      {/* <Col span={12}>
         <TextInput label="نام" name="firstName" form={form} required={true} />
       </Col>
 
@@ -21,35 +19,35 @@ function OwnerDataTab({ form }: ITabProps) {
           form={form}
           required={true}
         />
-      </Col>
+      </Col> */}
 
-      <Col span={12}>
+      {/* <Col span={12}>
         <PhoneNumberInput
           label="شماره تلفن"
           name="phoneNumber"
           form={form}
           required={true}
         />
-      </Col>
+      </Col> */}
 
-      <Col span={12}>
+      {/* <Col span={12}>
         <EmailInput label="ایمیل" name="email" form={form} required={false} />
-      </Col>
+      </Col> */}
 
-      <Col span={12}>
+      {/* <Col span={12}>
         <NationalCodeInput
           name="nationalCode"
           label="کد ملی"
           form={form}
           required={false}
         />
-      </Col>
+      </Col> */}
 
-      <Col span={12}>
+      {/* <Col span={12}>
         <AgeInput name="age" label="سن" form={form} required={false} />
-      </Col>
+      </Col> */}
 
-      <Col span={12}>
+      {/* <Col span={12}>
         <SelectionInput
           options={[
             { value: "male", name: "مذکر" },
@@ -60,7 +58,7 @@ function OwnerDataTab({ form }: ITabProps) {
           form={form}
           required={true}
         />
-      </Col>
+      </Col> */}
     </Row>
   );
 }

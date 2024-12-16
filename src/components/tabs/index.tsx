@@ -7,12 +7,14 @@ import AccountInfoTab from "../accountInfo";
 import MoreDataTab from "../moreData";
 import SubmitButton from "../submitButton";
 import React from "react";
+import { FormCategories } from "../../types/types";
 
 interface IProps {
   form: FormInstance;
+  formCategories: FormCategories;
 }
 
-function TabsContainer({ form }: IProps) {
+function TabsContainer({ form, formCategories }: IProps) {
   const initialItems = [
     {
       label: (
@@ -23,8 +25,8 @@ function TabsContainer({ form }: IProps) {
       ),
       children: (
         <>
-          <OwnerDataTab form={form} />
-          {/* <SubmitButton /> */}
+          <OwnerDataTab form={form} fields={formCategories.personFields} />
+          <SubmitButton isEditMode={false} />
         </>
       ),
       key: "1",
@@ -38,8 +40,8 @@ function TabsContainer({ form }: IProps) {
       ),
       children: (
         <>
-          <BusinessData form={form} />
-          {/* <SubmitButton /> */}
+          <BusinessData form={form} fields={formCategories.jobFields} />
+          <SubmitButton isEditMode={false} />
         </>
       ),
       key: "2",
@@ -53,8 +55,8 @@ function TabsContainer({ form }: IProps) {
       ),
       children: (
         <>
-          <AccountInfoTab form={form} />
-          {/* <SubmitButton /> */}
+          <AccountInfoTab form={form} fields={formCategories.accountFields} />
+          <SubmitButton isEditMode={false} />
         </>
       ),
       key: "3",
@@ -68,8 +70,8 @@ function TabsContainer({ form }: IProps) {
       ),
       children: (
         <>
-          <MoreDataTab form={form} />
-          {/* <SubmitButton /> */}
+          <MoreDataTab form={form} fields={formCategories.othersFields} />
+          <SubmitButton isEditMode={false} />
         </>
       ),
       key: "4",

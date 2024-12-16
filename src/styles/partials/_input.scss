@@ -1,0 +1,112 @@
+:where(.css-dev-only-do-not-override-1x0dypw).ant-input,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-input,
+:where(.css-dev-only-do-not-override-13nnop5).ant-input-number
+  .ant-input-number-input {
+  padding: 4px 20px !important;
+}
+
+:where(.css-dev-only-do-not-override-1x0dypw).ant-input-affix-wrapper {
+  padding: 0 !important;
+  padding-left: 11px !important;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-form-item {
+  margin-bottom: 0px !important;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-form-item
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::before {
+  content: "" !important;
+}
+
+:where(
+    .css-dev-only-do-not-override-1x0dypw
+  ).ant-select-outlined.ant-select-status-error:not(.ant-select-customize-input)
+  .ant-select-selector,
+:where(
+    .css-dev-only-do-not-override-1x0dypw
+  ).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled),
+:where(
+    .css-dev-only-do-not-override-1x0dypw
+  ).ant-input-group-wrapper-outlined.ant-input-group-wrapper-status-error
+  .ant-input-group-addon {
+  border-color: #d9d9d9 !important;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-input-number
+  .ant-input-number-handler:hover {
+  height: 60% !important;
+  background-color: $primary_lighter_color;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-input-number
+  .ant-input-number-handler-wrap
+  .ant-input-number-handler {
+  height: 50% !important;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-input-number
+  .ant-input-number-handler-wrap {
+  width: 27px !important;
+  opacity: 1 !important;
+}
+
+.ant-form-item-control-input-content {
+  //   .ant-input,
+  .ant-input-outlined,
+  .ant-select,
+  .ant-input-affix-wrapper,
+  .ant-input-number {
+    height: 56px !important;
+  }
+}
+
+.ant-input-number,
+.ant-input-number-input-wrap,
+.ant-input-number-input {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.ant-select-show-search {
+  width: 90px !important;
+}
+
+.formItemContainer {
+  position: relative;
+  min-height: 56px;
+}
+
+.label {
+  position: absolute;
+  z-index: 10;
+  right: 10px;
+  background-color: white;
+  padding: 0 10px;
+  height: 22px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s;
+}
+
+.requirement {
+  padding-right: 2px;
+  font-size: 12px;
+}
+
+.ant-form-item-control-input-content .ant-input-textarea-affix-wrapper {
+  min-height: 76px;
+  height: auto !important;
+  padding: 12px 6px !important;
+}
+
+.uploaderText {
+  font-size: 12px;
+  color: #7a7a7a;
+  margin: 6px 0 0 0;
+}

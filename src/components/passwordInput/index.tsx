@@ -1,6 +1,10 @@
 import { Form, Input } from "antd";
 import { useRef, useState } from "react";
-import { minValidation, requiredValidation } from "../../utils/validator";
+import {
+  maxValidation,
+  minValidation,
+  requiredValidation,
+} from "../../utils/validator";
 import { INumericProps } from "../../types/types";
 import InputTitle from "../inputTitle";
 import React from "react";
@@ -9,10 +13,11 @@ function PasswordInput({
   name,
   label,
   min = 8,
+  max = 16,
   form,
   required,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -38,9 +43,10 @@ function PasswordInput({
             message: requiredValidation(),
           },
           { min: min, message: minValidation(min) },
+          { max: max, message: maxValidation(max) },
           {
             pattern: pattern,
-            message: pattenErrorMessage,
+            message: patternErrorMessage || "مقدار ورودی معتبر نمی باشد.",
           },
         ]}
       >

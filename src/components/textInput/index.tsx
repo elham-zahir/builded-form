@@ -11,12 +11,12 @@ import InputTitle from "../inputTitle";
 function TextInput({
   name,
   label,
-  min = 2,
+  min = 0,
   max = 100,
   form,
   required,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage = undefined,
   isEditMode = false,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
@@ -44,7 +44,7 @@ function TextInput({
         rules={[
           {
             pattern: pattern,
-            message: pattenErrorMessage,
+            message: patternErrorMessage || "مقدار ورودی معتبر نمی باشد.",
           },
           {
             required: required,

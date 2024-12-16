@@ -10,9 +10,10 @@ function TextAreaInput({
   label,
   form,
   required,
+  min = 0,
   max = 100,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage = "",
 }: ITextAreaProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -37,11 +38,12 @@ function TextAreaInput({
             required: required,
             message: requiredValidation(),
           },
-          { pattern: pattern, message: pattenErrorMessage },
+          { pattern: pattern, message: patternErrorMessage },
         ]}
       >
         <TextArea
           maxLength={max}
+          minLength={min}
           showCount
           rows={8}
           ref={inputRef}

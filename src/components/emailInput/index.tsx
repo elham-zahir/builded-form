@@ -11,7 +11,7 @@ function EmailInput({
   form,
   required,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage = "",
 }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
@@ -38,7 +38,7 @@ function EmailInput({
           },
           {
             pattern: pattern,
-            message: pattenErrorMessage,
+            message: patternErrorMessage,
           },
         ]}
       >

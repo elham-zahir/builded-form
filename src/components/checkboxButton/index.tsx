@@ -9,18 +9,23 @@ function CheckboxButtons({
   options,
   required,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage = "",
 }: IRadioProps) {
   return (
     <Form.Item
-      label={label}
+      label={
+        <>
+          {label}
+          <span className="requirement">{required ? "(اجباری)" : ""}</span>
+        </>
+      }
       name={name}
       rules={[
         {
           required: required,
           message: requiredValidation(),
         },
-        { pattern: pattern, message: pattenErrorMessage },
+        { pattern: pattern, message: patternErrorMessage },
       ]}
     >
       <Checkbox.Group>

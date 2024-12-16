@@ -14,7 +14,7 @@ function SelectionInput({
   required,
   options,
   pattern = undefined,
-  pattenErrorMessage = "",
+  patternErrorMessage = "",
   isEditMode,
 }: ISelectProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
@@ -44,7 +44,7 @@ function SelectionInput({
             required: required,
             message: requiredValidation(),
           },
-          { pattern: pattern, message: pattenErrorMessage },
+          // { pattern: pattern, message: patternErrorMessage },
         ]}
       >
         <Select

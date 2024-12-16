@@ -1,36 +1,14 @@
-import PasswordInput from "../passwordInput";
-import TextInput from "../textInput";
 import { Col, Row } from "antd";
 import { ITabProps } from "../../types/types";
 import React from "react";
+import { fieldType } from "../../utils/validator";
 
-function AccountInfoTab({ form }: ITabProps) {
+function AccountInfoTab({ form, fields }: ITabProps) {
   return (
     <Row gutter={[20, 24]}>
-      <Col span={12}>
-        <TextInput
-          label="نام کاربری"
-          name="userName"
-          form={form}
-          required={true}
-        />
-      </Col>
-      <Col span={12}>
-        <PasswordInput
-          label="رمز عبور"
-          name="password"
-          form={form}
-          required={true}
-        />
-      </Col>
-      <Col span={12}>
-        <PasswordInput
-          label="تکرار رمز عبور"
-          name="passwordRepeat"
-          form={form}
-          required={true}
-        />
-      </Col>
+      {fields.map((item) => {
+        return <Col span={12}>{fieldType(item, form)}</Col>;
+      })}
     </Row>
   );
 }

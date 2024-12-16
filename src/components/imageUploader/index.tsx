@@ -7,16 +7,23 @@ import UploadIcon from "../../icons/UploadIcon";
 
 const { Dragger } = Upload;
 
-function ImageUploader({ name, label, max = 3, required }: IUploaderProps) {
+function ImageUploader({
+  name,
+  label,
+  max = 3,
+  required,
+  pattern,
+  patternErrorMessage,
+}: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
 
   const handleChange = ({ fileList: newFileList }: { fileList: any[] }) => {
-    const isImage = /image\/(jpeg|png|gif|bmp|tiff|webp)/.test(
+    const isImage = (pattern || /image\/(jpeg|png|gif|bmp|tiff|webp)/).test(
       newFileList[newFileList.length - 1].type
     );
 
     if (!isImage) {
-      message.error("تنها می توانید عکس آپلود کنید.");
+      message.error(patternErrorMessage || "تنها می توانید عکس آپلود کنید.");
     } else {
       setFileList(newFileList);
     }
