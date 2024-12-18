@@ -261,6 +261,19 @@ const initialOthersFields: IFieldType[] = [
     options: undefined,
     category: "others",
   },
+  {
+    label: "URL",
+    name: "url",
+    type: { name: "URL", value: "url" },
+    required: true,
+    min: 2,
+    max: 200,
+    pattern: undefined,
+    patternErrorMessage: undefined,
+    id: 17,
+    options: undefined,
+    category: "others",
+  },
 ];
 
 export const formCategories: FormCategories = {

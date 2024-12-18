@@ -12,6 +12,7 @@ import ImageUploader from "../components/imageUploader";
 import FileUploader from "../components/fileUploader";
 import PasswordInput from "../components/passwordInput";
 import TextAreaInput from "../components/textArea";
+import UrlInput from "../components/UrlInput";
 
 export const minValidation = (num: number): string => {
   return `مقدار کاراکتر ها نمی تواند از  ${num} کمتر باشد.`;
@@ -196,12 +197,26 @@ export const fieldType = (
       );
 
     case "url":
-      <>werwer</>;
-      break;
-    case "date":
-      <>werwer</>;
-      break;
+      return (
+        <UrlInput
+          label={item.label}
+          name={item.name}
+          key={item.name}
+          form={form}
+          required={item.required}
+          pattern={item.pattern}
+          patternErrorMessage={item.patternErrorMessage}
+          min={item.min}
+          max={item.max}
+          onReset={resetClicked}
+        />
+      );
+
     case "search":
+      <>werwer</>;
+      break;
+
+    case "date":
       <>werwer</>;
       break;
 
