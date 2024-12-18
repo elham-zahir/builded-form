@@ -1,5 +1,5 @@
 import { Form } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import TextArea from "antd/es/input/TextArea";
 import { ITextAreaProps } from "../../types/types";
@@ -14,9 +14,15 @@ function TextAreaInput({
   max = 100,
   pattern = undefined,
   patternErrorMessage = "",
+  isEditMode = false,
+  onReset,
 }: ITextAreaProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode, onReset]);
 
   return (
     <div className={"formItemContainer"}>
@@ -47,7 +53,7 @@ function TextAreaInput({
           showCount
           rows={8}
           ref={inputRef}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
               setIsFocus(false);

@@ -15,13 +15,14 @@ function NumberInput({
   form,
   required,
   isEditMode,
+  onReset,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
   useEffect(() => {
     form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
-  }, [isEditMode]);
+  }, [isEditMode, onReset]);
 
   return (
     <div className={"formItemContainer"}>
@@ -65,7 +66,7 @@ function NumberInput({
           ref={inputRef}
           min={min}
           max={max}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
               setIsFocus(false);

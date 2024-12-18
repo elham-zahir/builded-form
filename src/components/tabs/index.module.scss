@@ -8,9 +8,19 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: rgb(238, 238, 238);
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .tabLine {
+    height: 44px;
+    width: 3px;
+    background-color: rgb(238, 238, 238);
+    position: absolute;
+    bottom: -50px;
+    right: 40px;
+    content: "";
+    border-radius: 2px;
   }
 }

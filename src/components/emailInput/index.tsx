@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
@@ -12,9 +12,15 @@ function EmailInput({
   required,
   pattern = undefined,
   patternErrorMessage = "",
+  isEditMode,
+  onReset,
 }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode, onReset]);
 
   return (
     <div className={"formItemContainer"}>
@@ -45,7 +51,7 @@ function EmailInput({
         <Input
           type="text"
           ref={inputRef}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
               setIsFocus(false);

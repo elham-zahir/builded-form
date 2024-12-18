@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   maxValidation,
   minValidation,
@@ -18,9 +18,15 @@ function PasswordInput({
   required,
   pattern = undefined,
   patternErrorMessage,
+  isEditMode,
+  onReset,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode, onReset]);
 
   return (
     <div className={"formItemContainer"}>
@@ -52,7 +58,7 @@ function PasswordInput({
       >
         <Input.Password
           ref={inputRef}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
               setIsFocus(false);

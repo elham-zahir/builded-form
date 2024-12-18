@@ -56,85 +56,10 @@ export interface IOptionType {
 }
 
 export interface ITabProps {
-  form: FormInstance;
+  title: string;
+  name: string;
   fields: IFieldType[];
-}
-
-export interface INumericProps {
-  name: string;
-  label: string;
-  min?: number;
-  max?: number;
-  form: FormInstance;
-  required: boolean;
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-  isEditMode?: boolean;
-}
-
-export interface IRadioProps {
-  name: string;
-  label: string;
-  options: IOptionType[];
-  required: boolean;
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-  isEditMode?: boolean;
-}
-
-export interface ITextProps {
-  label: string;
-  name: string;
-  form: FormInstance;
-  required: boolean;
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-  isEditMode?: boolean;
-}
-
-export interface ISelectProps {
-  label: string;
-  name: string;
-  form: FormInstance;
-  required: boolean;
-  options: IOptionType[];
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-  isEditMode?: boolean;
-}
-
-export interface ITextAreaProps {
-  label: string;
-  name: string;
-  form: FormInstance;
-  required: boolean;
-  min?: number;
-  max?: number;
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-}
-
-export interface IUploaderProps {
-  name: string;
-  label: string;
-  max?: number;
-  required: boolean;
-  pattern?: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-}
-
-export interface IFieldType {
-  label: string;
-  name: string;
-  type: IOptionType;
-  min: number;
-  max: number;
-  options: IOptionType[] | undefined;
-  required: boolean;
-  pattern: RegExp | undefined;
-  patternErrorMessage?: string | undefined;
-  id: number;
-  category: TCategory;
+  onSubmitTab: () => void;
 }
 
 export interface FormCategories {
@@ -142,4 +67,63 @@ export interface FormCategories {
   jobFields: IFieldType[];
   accountFields: IFieldType[];
   othersFields: IFieldType[];
+}
+
+export interface IBaseProps {
+  name: string;
+  label: string;
+  required: boolean;
+  isEditMode?: boolean;
+}
+
+export interface IPatternProps {
+  pattern?: RegExp | undefined;
+  patternErrorMessage?: string | undefined;
+}
+
+export interface IMinAndMax {
+  min?: number;
+  max?: number;
+}
+
+export interface INumericProps extends IBaseProps, IPatternProps, IMinAndMax {
+  form: FormInstance;
+  onReset: boolean;
+}
+
+export interface IRadioProps extends IBaseProps, IPatternProps {
+  options: IOptionType[];
+}
+
+export interface ITextProps extends IBaseProps, IPatternProps {
+  form: FormInstance;
+  onReset: boolean;
+}
+
+export interface ISelectProps extends IBaseProps, IPatternProps {
+  form: FormInstance;
+  options: IOptionType[];
+  onReset: boolean;
+}
+
+export interface ITextAreaProps extends IBaseProps, IPatternProps, IMinAndMax {
+  form: FormInstance;
+  onReset: boolean;
+}
+
+export interface IUploaderProps extends IPatternProps {
+  name: string;
+  label: string;
+  max?: number;
+  required: boolean;
+}
+
+export interface IFieldType extends IPatternProps, IMinAndMax {
+  label: string;
+  name: string;
+  type: IOptionType;
+  options: IOptionType[] | undefined;
+  required: boolean;
+  id: number;
+  category: TCategory;
 }

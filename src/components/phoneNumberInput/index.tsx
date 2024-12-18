@@ -1,5 +1,5 @@
 import { Form, Input, Select } from "antd";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
@@ -15,9 +15,15 @@ function PhoneNumberInput({
   required,
   pattern = undefined,
   patternErrorMessage,
+  isEditMode,
+  onReset,
 }: ITextProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+  }, [isEditMode, onReset]);
 
   const onSearch = (value: string) => {};
 
@@ -70,7 +76,7 @@ function PhoneNumberInput({
           ref={inputRef}
           type="number"
           addonAfter={selectBefore}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
             if (!form.getFieldValue(name)) {
               setIsFocus(false);

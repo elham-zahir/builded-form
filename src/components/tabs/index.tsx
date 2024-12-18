@@ -1,82 +1,68 @@
-import { FormInstance, Tabs } from "antd";
+import { Tabs } from "antd";
 import { useState } from "react";
 import styles from "./index.module.scss";
-import OwnerDataTab from "../ownerData";
-import BusinessData from "../businessData";
-import AccountInfoTab from "../accountInfo";
-import MoreDataTab from "../moreData";
-import SubmitButton from "../submitButton";
+import DataTab from "../dataTab";
 import React from "react";
-import { FormCategories } from "../../types/types";
+import { FormCategories, IOptionType } from "../../types/types";
+import CheckIcon from "../../icons/CheckIcon";
+
+const tabs: IOptionType[] = [
+  { name: "اطلاعات صاحب کسب و کار", value: "personFields" },
+  { name: "اطلاعات کسب و کار", value: "jobFields" },
+  { name: "اطلاعات حساب کاربری", value: "accountFields" },
+  { name: "اطلاعات بیشتر", value: "othersFields" },
+];
 
 interface IProps {
-  form: FormInstance;
   formCategories: FormCategories;
 }
 
-function TabsContainer({ form, formCategories }: IProps) {
-  const initialItems = [
-    {
+function TabsContainer({ formCategories }: IProps) {
+  const [submittedTabs, setSubmittedTabs] = useState<number[]>([]);
+
+  const initialItems = tabs?.map((item, index) => {
+    return {
       label: (
         <div className={styles.tabLabel}>
-          <span className={styles.tabIndex}>1</span>
-          <p>اطلاعات صاحب کسب و کار</p>
+          <span
+            className={`${styles.tabIndex} tabIndex`}
+            style={{
+              backgroundColor: submittedTabs.includes(index + 1)
+                ? "#4daa9f"
+                : "#eeeeee",
+            }}
+          >
+            {submittedTabs.includes(index + 1) ? <CheckIcon /> : index + 1}
+          </span>
+          <p>{item.name}</p>
+          {index !== tabs.length - 1 && (
+            <div
+              className={`${styles.tabLine} tabLine`}
+              style={{
+                backgroundColor: submittedTabs.includes(index + 1)
+                  ? "#4daa9f"
+                  : "#eeeeee",
+              }}
+            ></div>
+          )}
         </div>
       ),
       children: (
-        <>
-          <OwnerDataTab form={form} fields={formCategories.personFields} />
-          <SubmitButton isEditMode={false} />
-        </>
+        <DataTab
+          title={item.name.toString()}
+          name={item.value.toString()}
+          fields={formCategories[item.value.toString()]}
+          onSubmitTab={() => {
+            setSubmittedTabs(
+              Array.from(new Set([...submittedTabs, index + 1]))
+            );
+            setActiveKey(index < 3 ? index + 2 + "" : index + 1 + "");
+          }}
+        />
       ),
-      key: "1",
-    },
-    {
-      label: (
-        <div className={styles.tabLabel}>
-          <span className={styles.tabIndex}>2</span>
-          <p>اطلاعات کسب و کار</p>
-        </div>
-      ),
-      children: (
-        <>
-          <BusinessData form={form} fields={formCategories.jobFields} />
-          <SubmitButton isEditMode={false} />
-        </>
-      ),
-      key: "2",
-    },
-    {
-      label: (
-        <div className={styles.tabLabel}>
-          <span className={styles.tabIndex}>3</span>
-          <p>اطلاعات حساب کاربری</p>
-        </div>
-      ),
-      children: (
-        <>
-          <AccountInfoTab form={form} fields={formCategories.accountFields} />
-          <SubmitButton isEditMode={false} />
-        </>
-      ),
-      key: "3",
-    },
-    {
-      label: (
-        <div className={styles.tabLabel}>
-          <span className={styles.tabIndex}>4</span>
-          <p>اطلاعات بیشتر</p>
-        </div>
-      ),
-      children: (
-        <>
-          <MoreDataTab form={form} fields={formCategories.othersFields} />
-          <SubmitButton isEditMode={false} />
-        </>
-      ),
-      key: "4",
-    },
-  ];
+      key: index + 1 + "",
+    };
+  });
 
   const [activeKey, setActiveKey] = useState(initialItems[0].key);
 
@@ -85,14 +71,12 @@ function TabsContainer({ form, formCategories }: IProps) {
   };
 
   return (
-    <>
-      <Tabs
-        tabPosition="left"
-        onChange={onChange}
-        activeKey={activeKey}
-        items={initialItems}
-      />
-    </>
+    <Tabs
+      tabPosition="left"
+      onChange={onChange}
+      activeKey={activeKey}
+      items={initialItems}
+    />
   );
 }
 

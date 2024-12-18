@@ -25,7 +25,7 @@ function CheckboxButtons({
           required: required,
           message: requiredValidation(),
         },
-        { pattern: pattern, message: patternErrorMessage },
+        // { pattern: pattern, message: patternErrorMessage },
       ]}
     >
       <Checkbox.Group>

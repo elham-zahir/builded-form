@@ -18,13 +18,14 @@ function TextInput({
   pattern = undefined,
   patternErrorMessage = undefined,
   isEditMode = false,
+  onReset,
 }: INumericProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
   useEffect(() => {
     form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
-  }, [isEditMode]);
+  }, [isEditMode, onReset]);
 
   return (
     <div className={"formItemContainer"}>
@@ -57,11 +58,9 @@ function TextInput({
         <Input
           type="text"
           ref={inputRef}
-          onClick={() => setIsFocus(true)}
+          onFocus={() => setIsFocus(true)}
           onBlur={() => {
-            if (!form.getFieldValue(name)) {
-              setIsFocus(false);
-            }
+            !form.getFieldValue(name) && setIsFocus(false);
           }}
         />
       </Form.Item>

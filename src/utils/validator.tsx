@@ -25,19 +25,25 @@ export const requiredValidation = (): string => {
   return "این فیلد الزامی است.";
 };
 
-export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
+export const fieldType = (
+  item: IFieldType,
+  form: FormInstance<any>,
+  resetClicked: boolean
+) => {
   switch (item.type.value) {
     case "text":
       return (
         <TextInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
           min={item.min}
           max={item.max}
+          onReset={resetClicked}
         />
       );
 
@@ -46,11 +52,13 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <TextAreaInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
           max={item.max}
+          onReset={resetClicked}
         />
       );
 
@@ -59,10 +67,12 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <NumberInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           min={item.min}
           max={item.max}
+          onReset={resetClicked}
         />
       );
 
@@ -71,10 +81,12 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <EmailInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          onReset={resetClicked}
         />
       );
 
@@ -83,6 +95,7 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <ImageUploader
           label={item.label}
           name={item.name}
+          key={item.name}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
@@ -95,6 +108,7 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <FileUploader
           label={item.label}
           name={item.name}
+          key={item.name}
           required={item.required}
           max={item.max}
           pattern={item.pattern}
@@ -107,10 +121,12 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <PhoneNumberInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          onReset={resetClicked}
         />
       );
 
@@ -119,6 +135,7 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <CheckboxButtons
           label={item.label}
           name={item.name}
+          key={item.name}
           options={item.options}
           required={item.required}
         />
@@ -129,6 +146,7 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <RadioInput
           label={item.label}
           name={item.name}
+          key={item.name}
           options={item.options}
           required={item.required}
         />
@@ -139,9 +157,11 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <SelectionInput
           label={item.label}
           name={item.name}
+          key={item.name}
           options={item.options}
           form={form}
           required={item.required}
+          onReset={resetClicked}
         />
       );
 
@@ -149,13 +169,15 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
       return (
         <PasswordInput
           label={item.label}
-          name={item.label}
+          name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           min={item.min}
           max={item.max}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          onReset={resetClicked}
         />
       );
 
@@ -164,10 +186,12 @@ export const fieldType = (item: IFieldType, form: FormInstance<any>) => {
         <NationalCodeInput
           label={item.label}
           name={item.name}
+          key={item.name}
           form={form}
           required={item.required}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          onReset={resetClicked}
         />
       );
 

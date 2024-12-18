@@ -47,7 +47,7 @@ const initialPersonFields: IFieldType[] = [
   },
   {
     label: "شماره تلفن",
-    name: "nationalCode",
+    name: "phoneNumber",
     type: { name: "شماره تلفن", value: "tel" },
     required: true,
     pattern: /^9\d{9}$/,
@@ -77,9 +77,8 @@ const initialPersonFields: IFieldType[] = [
     name: "nationalCode",
     type: { name: "کد ملی", value: "nationalCode" },
     required: false,
-    pattern: /^9\d{9}$/,
-    patternErrorMessage:
-      "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 9 شروع شود و 10 رقم باشد).",
+    pattern: undefined,
+    patternErrorMessage: undefined,
     id: 4,
     options: undefined,
     min: undefined,
