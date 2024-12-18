@@ -4,6 +4,7 @@ import styles from "./styles/index.module.scss";
 import "./styles/global.scss";
 import TabsContainer from "./components/tabs";
 import { formCategories } from "./types/initials";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (

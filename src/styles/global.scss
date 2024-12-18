@@ -1,6 +1,7 @@
 @import "partials/variables";
 @import "partials/input";
 @import "partials/tab";
+@import "partials/datePicker";
 
 // :where(.css-dev-only-do-not-override-1x0dypw).ant-input-outlined:hover,
 // :where(.css-dev-only-do-not-override-1x0dypw).ant-select-outlined:not(
@@ -25,5 +26,3 @@
 //   border-color: $primary_color !important;
 //   box-shadow: none !important;
 // }
-
-// form item label styles

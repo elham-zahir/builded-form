@@ -1,23 +1,23 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import App from "./App";
-// import reportWebVitals from "./reportWebVitals";
-
-// const root = ReactDOM.createRoot(
-//   document.getElementById("root") as HTMLElement
-// );
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-
-// reportWebVitals();
-
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const Index = () => <App />;
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-ReactDOM.render(<Index />, document.getElementById("root"));
+reportWebVitals();
+
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import App from "./App";
+
+// const Index = () => <App />;
+
+// ReactDOM.render(<Index />, document.getElementById("root"));

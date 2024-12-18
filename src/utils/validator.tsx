@@ -13,6 +13,7 @@ import FileUploader from "../components/fileUploader";
 import PasswordInput from "../components/passwordInput";
 import TextAreaInput from "../components/textArea";
 import UrlInput from "../components/UrlInput";
+import PersianCalendar from "../components/datePicker";
 
 export const minValidation = (num: number): string => {
   return `مقدار کاراکتر ها نمی تواند از  ${num} کمتر باشد.`;
@@ -217,8 +218,15 @@ export const fieldType = (
       break;
 
     case "date":
-      <>werwer</>;
-      break;
+      return (
+        <PersianCalendar
+          form={form}
+          label={item.label}
+          name={item.name}
+          onReset={resetClicked}
+          required={item.required}
+        />
+      );
 
     default:
       break;

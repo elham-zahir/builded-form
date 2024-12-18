@@ -118,6 +118,13 @@ export interface IUploaderProps extends IPatternProps {
   required: boolean;
 }
 
+export interface IDatePickerType extends IBaseProps {
+  form: FormInstance;
+  required: boolean;
+  onReset: boolean;
+  isEditMode?: boolean;
+}
+
 export interface IFieldType extends IPatternProps, IMinAndMax {
   label: string;
   name: string;
