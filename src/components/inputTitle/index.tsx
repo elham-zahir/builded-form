@@ -10,7 +10,7 @@ function InputTitle({ isFocus, label, required, onClick }: IProps) {
     <p
       className={"label"}
       style={{
-        top: isFocus ? "-11px" : "17px",
+        top: isFocus ? "-11px" : "14px",
         color: isFocus ? "#4daa9f" : "#969696",
         fontWeight: isFocus ? 600 : 400,
       }}

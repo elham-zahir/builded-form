@@ -9,8 +9,11 @@ interface IProps {
 
 function FormAction({ isEditMode, onReset }: IProps) {
   return (
-    <Row gutter={[20, 24]} className={styles.buttonsContainer}>
-      <Col span={12}>
+    <Row
+      gutter={[20, 24]}
+      className={`${styles.buttonsContainer} ActionButtonsContainer`}
+    >
+      <Col xs={24} sm={24} md={12}>
         <Form.Item label={null}>
           <Button
             type="primary"
@@ -21,7 +24,7 @@ function FormAction({ isEditMode, onReset }: IProps) {
           </Button>
         </Form.Item>
       </Col>
-      <Col span={12}>
+      <Col xs={24} sm={24} md={12}>
         <Form.Item label={null}>
           <Button
             type="primary"

@@ -5,7 +5,7 @@ import EmailInput from "../components/emailInput";
 import PhoneNumberInput from "../components/phoneNumberInput";
 import NumberInput from "../components/numberInput";
 import SelectionInput from "../components/selectionInput";
-import NationalCodeInput from "../components/nationalCodeInput";
+import NumberInputWithoutButton from "../components/numberInputWithoutButton";
 import RadioInput from "../components/radioInput";
 import CheckboxButtons from "../components/checkboxButton";
 import ImageUploader from "../components/imageUploader";
@@ -102,6 +102,7 @@ export const fieldType = (
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
           max={item.max}
+          accept={item?.accept}
         />
       );
 
@@ -115,6 +116,7 @@ export const fieldType = (
           max={item.max}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          accept={item?.accept}
         />
       );
 
@@ -183,9 +185,9 @@ export const fieldType = (
         />
       );
 
-    case "nationalCode":
+    case "numberWithoutButton":
       return (
-        <NationalCodeInput
+        <NumberInputWithoutButton
           label={item.label}
           name={item.name}
           key={item.name}

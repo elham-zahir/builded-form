@@ -1,26 +1,52 @@
+@import "../../styles/partials/variables";
+
 .tabLabel {
   display: flex;
   height: 100%;
   align-items: center;
 
   .tabIndex {
-    margin-left: 20px;
-    width: 36px;
-    height: 36px;
+    margin-left: 10px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 992px) {
+      margin-left: 20px;
+      width: 36px;
+      height: 36px;
+    }
   }
 
   .tabLine {
-    height: 44px;
-    width: 3px;
-    background-color: rgb(238, 238, 238);
-    position: absolute;
-    bottom: -50px;
-    right: 40px;
-    content: "";
-    border-radius: 2px;
+    @media (min-width: 992px) {
+      height: 44px;
+      width: 3px;
+      background-color: rgb(238, 238, 238);
+      position: absolute;
+      bottom: -50px;
+      right: 40px;
+      content: "";
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.title {
+  color: $black_color;
+  font-size: 16px;
+  margin-top: 0;
+  // margin-bottom: 20px !important;
+
+  @media (min-width: 992px) {
+    padding-right: 24px;
+    font-size: 18px !important;
   }
 }

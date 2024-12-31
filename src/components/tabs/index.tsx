@@ -5,12 +5,14 @@ import DataTab from "../dataTab";
 import React from "react";
 import { FormCategories, IOptionType } from "../../types/types";
 import CheckIcon from "../../icons/CheckIcon";
+import useWindowSize from "../../utils/useWindowSize";
 
 const tabs: IOptionType[] = [
-  { name: "اطلاعات صاحب کسب و کار", value: "personFields" },
-  { name: "اطلاعات کسب و کار", value: "jobFields" },
-  { name: "اطلاعات حساب کاربری", value: "accountFields" },
-  { name: "اطلاعات بیشتر", value: "othersFields" },
+  { name: "اطلاعات هویتی", value: "personFields" },
+  { name: "اطلاعات محل سکونت", value: "personLocationField" },
+  { name: "اطلاعات تماس", value: "contactInfoFields" },
+  { name: "اطلاعات کسب و کار", value: "businessInfoFields" },
+  { name: "اطلاعات تماس کسب و کار", value: "businessContactFields" },
 ];
 
 interface IProps {
@@ -48,17 +50,19 @@ function TabsContainer({ formCategories }: IProps) {
         </div>
       ),
       children: (
-        <DataTab
-          title={item.name.toString()}
-          name={item.value.toString()}
-          fields={formCategories[item.value.toString()]}
-          onSubmitTab={() => {
-            setSubmittedTabs(
-              Array.from(new Set([...submittedTabs, index + 1]))
-            );
-            setActiveKey(index < 3 ? index + 2 + "" : index + 1 + "");
-          }}
-        />
+        <>
+          <h2 className={styles.title}>{item.name.toString()}</h2>
+          <DataTab
+            name={item.value.toString()}
+            fields={formCategories[item.value.toString()]}
+            onSubmitTab={() => {
+              setSubmittedTabs(
+                Array.from(new Set([...submittedTabs, index + 1]))
+              );
+              setActiveKey(index < 3 ? index + 2 + "" : index + 1 + "");
+            }}
+          />
+        </>
       ),
       key: index + 1 + "",
     };
@@ -72,7 +76,7 @@ function TabsContainer({ formCategories }: IProps) {
 
   return (
     <Tabs
-      tabPosition="left"
+      tabPosition={useWindowSize() < 992 ? "top" : "left"}
       onChange={onChange}
       activeKey={activeKey}
       items={initialItems}

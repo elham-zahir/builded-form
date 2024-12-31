@@ -1,27 +1,6 @@
 import { FormInstance } from "antd";
 import { ReactNode } from "react";
 
-enum EInputType {
-  firstName,
-  lastName,
-  password,
-  email,
-  phoneNumber,
-  nationalCode,
-  age,
-  gender,
-  dateOfBirth,
-  description,
-  productName,
-  image,
-  pdf,
-  video,
-  checkbox,
-  radio,
-}
-
-export type TInputType = keyof typeof EInputType;
-
 enum ETypeOfInput {
   password,
   email,
@@ -43,9 +22,10 @@ export type TTypeOfInput = keyof typeof ETypeOfInput;
 
 enum ECategory {
   person,
-  job,
-  account,
-  others,
+  location,
+  contact,
+  businessInfo,
+  businessContactInfo,
 }
 
 export type TCategory = keyof typeof ECategory;
@@ -56,7 +36,6 @@ export interface IOptionType {
 }
 
 export interface ITabProps {
-  title: string;
   name: string;
   fields: IFieldType[];
   onSubmitTab: () => void;
@@ -64,9 +43,10 @@ export interface ITabProps {
 
 export interface FormCategories {
   personFields: IFieldType[];
-  jobFields: IFieldType[];
-  accountFields: IFieldType[];
-  othersFields: IFieldType[];
+  personLocationField: IFieldType[];
+  contactInfoFields: IFieldType[];
+  businessInfoFields: IFieldType[];
+  businessContactFields: IFieldType[];
 }
 
 export interface IBaseProps {
@@ -116,6 +96,7 @@ export interface IUploaderProps extends IPatternProps {
   label: string;
   max?: number;
   required: boolean;
+  accept?: string;
 }
 
 export interface IDatePickerType extends IBaseProps {
@@ -133,4 +114,5 @@ export interface IFieldType extends IPatternProps, IMinAndMax {
   required: boolean;
   id: number;
   category: TCategory;
+  accept?: string;
 }

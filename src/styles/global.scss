@@ -3,6 +3,19 @@
 @import "partials/tab";
 @import "partials/datePicker";
 
+body,
+html {
+  //   height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 1200px) {
+    height: 100vh;
+  }
+}
+
 // :where(.css-dev-only-do-not-override-1x0dypw).ant-input-outlined:hover,
 // :where(.css-dev-only-do-not-override-1x0dypw).ant-select-outlined:not(
 //     .ant-select-disabled

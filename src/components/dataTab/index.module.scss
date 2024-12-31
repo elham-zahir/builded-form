@@ -1,8 +1,6 @@
-@import "../../styles/partials/variables";
-
-.title {
-  color: $black_color;
-  margin-bottom: 30px;
-  font-size: 18px !important;
-  margin-top: 0;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // padding-top: 15px;
 }

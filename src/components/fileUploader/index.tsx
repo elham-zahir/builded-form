@@ -6,17 +6,26 @@ import { requiredValidation } from "../../utils/validator";
 
 const { Dragger } = Upload;
 
-function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
+function FileUploader({
+  name,
+  label,
+  max = 3,
+  required,
+  pattern,
+  patternErrorMessage,
+  accept,
+}: IUploaderProps) {
   const [fileList, setFileList] = useState<any[]>([]);
 
   const handleChange = ({ fileList: newFileList }: { fileList: any[] }) => {
-    const isValidFileType = /(\.pdf|\.docx|\.xlsx|\.txt|\.ppt|\.pptx)$/i.test(
-      newFileList[newFileList.length - 1]?.name
-    );
+    const isValidFileType = (
+      pattern || /(\.pdf|\.docx|\.xlsx|\.txt|\.ppt|\.pptx)$/i
+    )?.test(newFileList[newFileList.length - 1]?.name);
 
     if (!isValidFileType) {
       message.error(
-        "تنها می توانید فایل های pdf, word, excel, power point و note pad آپلود کنید."
+        patternErrorMessage ||
+          "تنها می توانید فایل های pdf, word, excel, power point و note pad آپلود کنید."
       );
     } else {
       setFileList(newFileList);
@@ -26,6 +35,11 @@ function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
   const customRequest = ({ file, onSuccess, onError }: any) => {
     // onSuccess?.({}, file);
     onSuccess?.(message.success("فایل با موفقیت آپلود شد."));
+  };
+
+  const handleRemove = (file: any) => {
+    const newFileList = fileList.filter((f) => f.uid !== file.uid);
+    setFileList(newFileList);
   };
 
   return (
@@ -52,7 +66,8 @@ function FileUploader({ name, label, max = 3, required }: IUploaderProps) {
         showUploadList={{ showRemoveIcon: true }}
         maxCount={max}
         customRequest={customRequest}
-        accept=".pdf, .docx, .xlsx, .txt, .ppt, .pptx"
+        onRemove={handleRemove}
+        accept={accept}
       >
         <Tooltip
           title={

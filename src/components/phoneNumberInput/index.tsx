@@ -1,4 +1,4 @@
-import { Form, Input, Select } from "antd";
+import { Form, InputNumber, Select } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { IOptionType, ITextProps } from "../../types/types";
@@ -72,9 +72,10 @@ function PhoneNumberInput({
           },
         ]}
       >
-        <Input
+        <InputNumber
           ref={inputRef}
           type="number"
+          className="phoneNumber"
           addonAfter={selectBefore}
           onFocus={() => setIsFocus(true)}
           onBlur={() => {

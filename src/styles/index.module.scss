@@ -22,17 +22,21 @@ code {
 }
 
 .container {
-  width: 70%;
-  margin: 160px auto;
-  height: 570px;
-  padding: 30px;
+  width: calc(100vw - 80px) !important;
+  margin: 20px auto;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgb(226, 226, 226);
   background-color: white;
-  // gap: 20px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+
+  @media (min-width: 1200px) {
+    width: 70vw !important;
+    height: 570px;
+    padding: 30px;
+  }
 }
 
 .formCreatorContainer {
@@ -43,7 +47,6 @@ code {
   gap: 20px;
   display: flex;
   flex-direction: column;
-  // border: 2px solid $primary_lighter_color;
 }
 
 .tabs {
@@ -51,36 +54,27 @@ code {
   border-radius: 20px;
 }
 
-// .fieldsContainer {
-//   direction: rtl;
-//   width: 60%;
-//   padding: 30px 30px 10px 30px;
-//   border-radius: 20px 0 0 20px;
-//   background-color: $primary_lighter_color;
-//   height: calc(100% - 40px);
-//   overflow-y: scroll;
-// }
-
 .submitButtonContainer {
   height: 76px;
   padding-top: 20px;
   border-top: 1px solid rgb(221, 221, 221);
 }
 
-// .fieldsContainer::-webkit-scrollbar {
-//   width: 4px;
-// }
+@media (min-width: 992px) {
+  form::-webkit-scrollbar {
+    width: 4px;
+  }
 
-// .fieldsContainer::-webkit-scrollbar-thumb {
-//   background-color: $primary_color;
-//   border-radius: 2px;
-// }
+  form::-webkit-scrollbar-thumb {
+    background-color: $primary_color;
+    border-radius: 2px;
+  }
 
-// .fieldsContainer::-webkit-scrollbar-track {
-//   background-color: $primary_lighter_color;
-//   border-radius: 2px;
-// }
+  form::-webkit-scrollbar-track {
+    border-radius: 2px;
+  }
 
-// .fieldsContainer {
-//   direction: ltr;
-// }
+  form {
+    direction: ltr;
+  }
+}

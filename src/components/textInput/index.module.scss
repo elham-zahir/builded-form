@@ -1,6 +1,6 @@
 .formItemContainer {
   position: relative;
-  min-height: 56px;
+  min-height: 50px;
 }
 
 .label {
@@ -8,7 +8,7 @@
   z-index: 1;
   right: 10px;
   background-color: white;
-  padding: 0 10px;
+  padding-top: 10px;
   height: 22px;
   margin: 0;
   display: flex;

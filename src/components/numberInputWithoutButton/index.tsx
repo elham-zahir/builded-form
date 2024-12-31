@@ -1,12 +1,11 @@
-import { Form, Input } from "antd";
+import { Form, InputNumber } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
-import nationalCodeValidation from "national-code-validation";
 import { ITextProps } from "../../types/types";
 import InputTitle from "../inputTitle";
 import React from "react";
 
-function NationalCodeInput({
+function NumberInputWithoutButton({
   name,
   label,
   form,
@@ -63,8 +62,9 @@ function NationalCodeInput({
           // },
         ]}
       >
-        <Input
+        <InputNumber
           ref={inputRef}
+          className="nationalCode"
           type="number"
           onFocus={() => setIsFocus(true)}
           onBlur={() => {
@@ -78,4 +78,4 @@ function NationalCodeInput({
   );
 }
 
-export default NationalCodeInput;
+export default NumberInputWithoutButton;

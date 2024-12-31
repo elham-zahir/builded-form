@@ -1,11 +1,11 @@
 import { Col, Form, message, Row } from "antd";
 import { ITabProps } from "../../types/types";
 import { fieldType } from "../../utils/validator";
+import styles from "./index.module.scss";
 import FormAction from "../formAction";
 import { useState } from "react";
-import styles from "./index.module.scss";
 
-function DataTab({ name, title, fields, onSubmitTab }: ITabProps) {
+function DataTab({ name, fields, onSubmitTab }: ITabProps) {
   const [form] = Form.useForm();
   const [resetClicked, setResetClicked] = useState<boolean>(false);
 
@@ -29,31 +29,31 @@ function DataTab({ name, title, fields, onSubmitTab }: ITabProps) {
   };
 
   return (
-    <Form
-      name={name}
-      form={form}
-      onFinish={async (values: any) => await handleSubmit(values)}
-      onFinishFailed={handleError}
-      autoComplete="off"
-      layout="vertical"
-    >
-      <h2 className={styles.title}>{title}</h2>
-      <Row gutter={[20, 24]}>
-        {fields.map((item) => {
-          return (
-            <Col span={12} key={item.name}>
-              {fieldType(item, form, resetClicked)}
-            </Col>
-          );
-        })}
-      </Row>
-      <FormAction
-        isEditMode={false}
-        onReset={() => {
-          setResetClicked(!resetClicked);
-        }}
-      />
-    </Form>
+    <>
+      <Form
+        name={name}
+        form={form}
+        onFinish={async (values: any) => await handleSubmit(values)}
+        onFinishFailed={handleError}
+        autoComplete="off"
+        layout="vertical"
+        className={styles.form}
+      >
+        <Row gutter={[20, 24]} className={styles.formInputs}>
+          {fields.map((item) => {
+            return (
+              <Col span={24} md={12} key={item.name}>
+                {fieldType(item, form, resetClicked)}
+              </Col>
+            );
+          })}
+        </Row>
+        <FormAction
+          isEditMode={false}
+          onReset={() => setResetClicked(!resetClicked)}
+        />
+      </Form>
+    </>
   );
 }
 

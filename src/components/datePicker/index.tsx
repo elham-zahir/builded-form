@@ -24,7 +24,7 @@
 // export default PersianCalendarComponent;
 
 import React, { useRef, useState } from "react";
-import { Calendar, CalendarProvider, DatePicker } from "zaman";
+import { CalendarProvider, DatePicker } from "zaman";
 import InputTitle from "../inputTitle";
 import { IDatePickerType } from "../../types/types";
 import { Form } from "antd";
@@ -54,6 +54,7 @@ const PersianCalendar = ({
     <div
       className={"formItemContainer , datePicker"}
       onClick={() => !isFocus && setIsFocus(true)}
+      onBlur={() => !calendarValue && setIsFocus(false)}
     >
       <InputTitle
         isFocus={isFocus}
