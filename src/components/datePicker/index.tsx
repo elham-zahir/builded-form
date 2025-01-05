@@ -41,8 +41,14 @@ const PersianCalendar = ({
 
         if (addedNodes.length > 0) {
           const header = document.querySelector(".css-1m8qzkt");
+
           const headerElement = header as HTMLElement;
+          const inputElement = document.querySelector(".datePicker input");
+
           if (header && headerElement !== modalRef.current) {
+            const rect = inputElement.getBoundingClientRect();
+            const xPosition = rect.left + window.scrollX;
+            if (xPosition) headerElement.style.right = xPosition + "px";
             modalRef.current = headerElement;
             const newElement = document.createElement("div");
             newElement.classList.add(styles.closeModal);
