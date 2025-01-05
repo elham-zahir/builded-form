@@ -1,14 +1,11 @@
 @import "./variables";
 
-.datePicker,
-.datePicker * {
-  &:focus-visible {
-    border: none !important;
-  }
+.datePicker input:focus-visible {
+  outline: none !important;
+}
 
-  &:focus {
-    border: none !important;
-  }
+.datePicker input:focus {
+  border: 1px solid $primary_color !important;
 }
 
 .datePicker:hover {
@@ -19,20 +16,15 @@
 
 .datePicker input {
   width: calc(100% - 43px) !important;
-  height: 55px !important;
+  height: 48px !important;
   border-radius: 7px !important;
   border: 1px solid #d9d9d9 !important;
   padding: 0 20px !important;
   font-size: 14px !important;
   font-weight: 300 !important;
 
-  &:focus {
-    border: 1px solid yellow !important;
-  }
-
   &:focus-visible {
-    border: 1px solid red !important;
-    height: 52px !important;
+    height: 48px !important;
   }
 }
 
@@ -61,4 +53,9 @@
 
 .css-1m8qzkt {
   z-index: 1000 !important;
+  border: 1px solid #dedede;
+}
+
+.css-137m4ck {
+  border: none !important;
 }

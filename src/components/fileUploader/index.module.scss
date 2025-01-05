@@ -1,0 +1,42 @@
+.uploadedFiles {
+  display: flex;
+  //   background-color: yellow;
+  gap: 30px;
+  margin-top: 10px;
+
+  .file {
+    position: relative;
+    margin-top: 20px;
+
+    img {
+      object-fit: cover;
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button {
+      width: 26px;
+      height: 26px;
+      background-color: red;
+      position: absolute;
+      top: -13px;
+      left: -13px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: #ff7875 !important;
+      }
+    }
+  }
+}
+
+.modalImage {
+  width: 100%;
+  height: 552px;
+  object-fit: cover;
+}

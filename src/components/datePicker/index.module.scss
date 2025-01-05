@@ -1,0 +1,32 @@
+$primary_lighter_color: #f0faf9;
+
+.datePicker {
+  position: relative;
+}
+
+.closeModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary_lighter_color;
+  padding: 6px 12px;
+  border-bottom: 1px solid #dedede;
+
+  .datePickerText {
+    font-size: 12px;
+    color: rgb(90, 90, 90);
+    margin: 4px 0;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+}
+
+.clearDate {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  z-index: 20;
+  cursor: pointer;
+}

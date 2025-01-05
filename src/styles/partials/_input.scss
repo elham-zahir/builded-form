@@ -23,14 +23,14 @@
 }
 
 :where(
-    .css-dev-only-do-not-override-1x0dypw
+    .css-dev-only-do-not-override-13nnop5
   ).ant-select-outlined.ant-select-status-error:not(.ant-select-customize-input)
   .ant-select-selector,
 :where(
-    .css-dev-only-do-not-override-1x0dypw
+    .css-dev-only-do-not-override-13nnop5
   ).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled),
 :where(
-    .css-dev-only-do-not-override-1x0dypw
+    .css-dev-only-do-not-override-13nnop5
   ).ant-input-group-wrapper-outlined.ant-input-group-wrapper-status-error
   .ant-input-group-addon {
   border-color: #d9d9d9 !important;
@@ -92,6 +92,7 @@
   justify-content: center;
   align-items: center;
   transition: 0.1s;
+  cursor: pointer;
 }
 
 .requirement {
@@ -147,3 +148,19 @@
 .phoneNumber {
   width: 100% !important;
 }
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-select-dropdown
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: $primary_opacity_color;
+}
+
+:where(.css-dev-only-do-not-override-13nnop5).ant-select-dropdown
+  .ant-select-item {
+  padding: 8px 16px !important;
+}
+
+// :where(
+//     .css-dev-only-do-not-override-13nnop5
+//   ).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+//   border-color: #d9d9d9 !important;
+// }

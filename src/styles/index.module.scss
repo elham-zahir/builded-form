@@ -33,9 +33,13 @@ code {
   justify-content: space-between;
 
   @media (min-width: 1200px) {
-    width: 70vw !important;
+    width: 1000px !important;
     height: 570px;
     padding: 30px;
+  }
+
+  @media (min-width: 1400px) {
+    width: 1326px !important;
   }
 }
 

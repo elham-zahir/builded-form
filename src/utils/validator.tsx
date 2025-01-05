@@ -8,7 +8,6 @@ import SelectionInput from "../components/selectionInput";
 import NumberInputWithoutButton from "../components/numberInputWithoutButton";
 import RadioInput from "../components/radioInput";
 import CheckboxButtons from "../components/checkboxButton";
-import ImageUploader from "../components/imageUploader";
 import FileUploader from "../components/fileUploader";
 import PasswordInput from "../components/passwordInput";
 import TextAreaInput from "../components/textArea";
@@ -92,20 +91,6 @@ export const fieldType = (
         />
       );
 
-    case "imageUploader":
-      return (
-        <ImageUploader
-          label={item.label}
-          name={item.name}
-          key={item.name}
-          required={item.required}
-          pattern={item.pattern}
-          patternErrorMessage={item.patternErrorMessage}
-          max={item.max}
-          accept={item?.accept}
-        />
-      );
-
     case "fileUploader":
       return (
         <FileUploader
@@ -113,9 +98,9 @@ export const fieldType = (
           name={item.name}
           key={item.name}
           required={item.required}
-          max={item.max}
           pattern={item.pattern}
           patternErrorMessage={item.patternErrorMessage}
+          max={item.max}
           accept={item?.accept}
         />
       );

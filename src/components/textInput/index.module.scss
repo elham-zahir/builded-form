@@ -2,17 +2,3 @@
   position: relative;
   min-height: 50px;
 }
-
-.label {
-  position: absolute;
-  z-index: 1;
-  right: 10px;
-  background-color: white;
-  padding-top: 10px;
-  height: 22px;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.1s;
-}

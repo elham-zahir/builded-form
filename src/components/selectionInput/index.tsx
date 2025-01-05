@@ -19,10 +19,12 @@ function SelectionInput({
   onReset,
 }: ISelectProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
 
   useEffect(() => {
-    form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+    // form.getFieldValue(name) ? setIsFocus(true) : setIsFocus(false);
+    setIsFocus(false);
   }, [isEditMode, onReset]);
 
   return (
@@ -35,6 +37,7 @@ function SelectionInput({
           if (!form.getFieldValue(name) && inputRef.current) {
             inputRef.current.focus();
             setIsFocus(true);
+            setOpen(true);
           }
         }}
       />
@@ -50,11 +53,18 @@ function SelectionInput({
       >
         <Select
           ref={inputRef}
-          onFocus={() => setIsFocus(true)}
+          open={open}
+          onClick={() => {
+            open ? setOpen(false) : setOpen(true);
+            !isFocus && setIsFocus(true);
+          }}
+          // onFocus={() => {
+          //   setIsFocus(true);
+          //   setOpen(true);
+          // }}
           onBlur={() => {
-            if (!form.getFieldValue(name)) {
-              setIsFocus(false);
-            }
+            if (!form.getFieldValue(name)) setIsFocus(false);
+            setOpen(false);
           }}
           suffixIcon={<DownIcon />}
           allowClear={{ clearIcon: <CloseIcon /> }}

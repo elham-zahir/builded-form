@@ -5,7 +5,6 @@ export const inputTypes: IOptionType[] = [
   { name: "متن طولانی", value: "textarea" },
   { name: "عدد", value: "number" },
   { name: "ایمیل", value: "email" },
-  { name: "آپلودر عکس", value: "imageUploader" },
   { name: "آپلودر فایل", value: "fileUploader" },
   { name: "شماره تلفن", value: "tel" },
   { name: "چند گزینه ای چند انتخابی", value: "checkbox" },
@@ -72,6 +71,19 @@ const initialPersonFields: IFieldType[] = [
     category: "person",
   },
   {
+    label: "تاریخ تولد",
+    name: "dateOfBirth",
+    type: { name: "تقویم", value: "date" },
+    required: true,
+    min: undefined,
+    max: undefined,
+    pattern: undefined,
+    patternErrorMessage: undefined,
+    id: 16,
+    options: undefined,
+    category: "person",
+  },
+  {
     label: "جنسیت",
     name: "gender",
     type: { name: "سلکشن", value: "select" },
@@ -85,19 +97,6 @@ const initialPersonFields: IFieldType[] = [
     ],
     min: undefined,
     max: undefined,
-    category: "person",
-  },
-  {
-    label: "تاریخ تولد",
-    name: "dateOfBirth",
-    type: { name: "تقویم", value: "date" },
-    required: true,
-    min: undefined,
-    max: undefined,
-    pattern: undefined,
-    patternErrorMessage: undefined,
-    id: 16,
-    options: undefined,
     category: "person",
   },
   {
@@ -148,10 +147,24 @@ const initialPersonFields: IFieldType[] = [
 ];
 
 const initialContactFields: IFieldType[] = [
+  // {
+  //   label: "تلفن همراه",
+  //   name: "phoneNumber",
+  //   type: { name: "شماره تلفن", value: "tel" },
+  //   required: true,
+  //   pattern: /^9\d{9}$/,
+  //   patternErrorMessage:
+  //     "لطفاً یک شماره تلفن معتبر وارد کنید (باید با 9 شروع شود و 10 رقم باشد).",
+  //   id: 2,
+  //   options: undefined,
+  //   min: undefined,
+  //   max: undefined,
+  //   category: "person",
+  // },
   {
     label: "تلفن همراه",
     name: "phoneNumber",
-    type: { name: "شماره تلفن", value: "tel" },
+    type: { name: "عدد بدون دکمه ی کم و زیاد", value: "numberWithoutButton" },
     required: true,
     pattern: /^9\d{9}$/,
     patternErrorMessage:
@@ -160,7 +173,7 @@ const initialContactFields: IFieldType[] = [
     options: undefined,
     min: undefined,
     max: undefined,
-    category: "person",
+    category: "contact",
   },
   {
     label: "تلفن ثابت",
@@ -174,7 +187,7 @@ const initialContactFields: IFieldType[] = [
     options: undefined,
     min: undefined,
     max: undefined,
-    category: "person",
+    category: "contact",
   },
   {
     label: "شماره فکس",
@@ -188,7 +201,7 @@ const initialContactFields: IFieldType[] = [
     options: undefined,
     min: undefined,
     max: undefined,
-    category: "person",
+    category: "contact",
   },
   {
     label: "ایمیل",
@@ -201,7 +214,7 @@ const initialContactFields: IFieldType[] = [
     options: undefined,
     min: undefined,
     max: undefined,
-    category: "person",
+    category: "contact",
   },
 ];
 
@@ -386,11 +399,12 @@ const initialbusinessFields: IFieldType[] = [
   {
     label: "لوگو",
     name: "imageUploader",
-    type: { name: "آپلودر عکس", value: "imageUploader" },
+    type: { name: "آپلودر فایل", value: "fileUploader" },
     required: true,
     min: undefined,
     max: 2,
-    pattern: /image\/(jpeg|png|gif|bmp|tiff|webp)/,
+    // pattern: /image\/(jpeg|png|gif|bmp|tiff|webp)/,
+    pattern: undefined,
     patternErrorMessage: undefined,
     id: 11,
     options: undefined,
