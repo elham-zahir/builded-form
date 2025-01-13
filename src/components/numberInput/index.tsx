@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber } from "antd";
+import { Form, InputNumber } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { requiredValidation } from "../../utils/validator";
 import { INumericProps } from "../../types/types";

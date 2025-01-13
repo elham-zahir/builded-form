@@ -192,15 +192,6 @@ function FileUploader({
 
             return (
               <div key={file.uid} className={styles.file}>
-                {/* {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt={file.name}
-                    onClick={() => handleImageClick(imageUrl)}
-                  />
-                ) : (
-                  <p>No preview available</p>
-                )} */}
                 {renderFilePreview(file)}
                 <Popconfirm
                   title="حذف فایل"
